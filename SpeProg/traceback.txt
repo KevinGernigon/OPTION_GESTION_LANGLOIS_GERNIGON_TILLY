@@ -1,28 +1,66 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 18, in script
+  File "game/script.rpy", line 24, in script
     call screen vueTerritoire
-ScriptError: could not find label 'infoRegio1'.
+  File "renpy/common/000statements.rpy", line 570, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/script.rpy", line 27, in execute
+    screen vueTerritoire:
+  File "game/script.rpy", line 27, in execute
+    screen vueTerritoire:
+  File "game/script.rpy", line 47, in execute
+    if region5Active==True:
+  File "game/script.rpy", line 47, in <module>
+    if region5Active==True:
+NameError: name 'region5Active' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 326, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 617, in main
-    run(restart)
-  File "renpy/main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "renpy/execution.py", line 922, in run_context
-    context.run()
-  File "game/script.rpy", line 18, in script
+  File "game/script.rpy", line 24, in script
     call screen vueTerritoire
-  File "renpy/script.py", line 900, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'infoRegio1'.
+  File "renpy/ast.py", line 1969, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 1957, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 570, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/exports.py", line 2983, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3101, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3512, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 567, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/screen.py", line 432, in visit_all
+    callback(self)
+  File "renpy/display/core.py", line 3512, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/screen.py", line 443, in per_interact
+    self.update()
+  File "renpy/display/screen.py", line 631, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 27, in execute
+    screen vueTerritoire:
+  File "game/script.rpy", line 27, in execute
+    screen vueTerritoire:
+  File "game/script.rpy", line 47, in execute
+    if region5Active==True:
+  File "game/script.rpy", line 47, in <module>
+    if region5Active==True:
+NameError: name 'region5Active' is not defined
 
 Windows-10-10.0.17134
 Ren'Py 7.4.3.1414
 SpeProg 1.0
-Thu Mar 11 09:52:41 2021
+Thu Mar 11 10:18:31 2021

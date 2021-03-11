@@ -1,0 +1,30 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/interaction.rpy", line 32: expected statement.
+    var_armee_totale = var_armee_totale + var_armee_region_1
+                     ^
+
+File "game/interaction.rpy", line 33: expected statement.
+    var_armee_region_1 = 0
+                       ^
+
+File "game/interaction.rpy", line 37: expected statement.
+    var_armee_totale = var_armee_totale + var_population_region_1
+                     ^
+
+File "game/interaction.rpy", line 38: expected statement.
+    var_population_region_1 = 0
+                            ^
+
+File "game/interaction.rpy", line 42: expected statement.
+    var_armee_region_1 = var_armee_region_1 +30
+                       ^
+
+File "game/interaction.rpy", line 43: expected statement.
+    var_armee_totale = var_armee_totale -30
+                     ^
+
+Ren'Py Version: Ren'Py 7.4.2.1292
+Thu Mar 11 09:56:12 2021

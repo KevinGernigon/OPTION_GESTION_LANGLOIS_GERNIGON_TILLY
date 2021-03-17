@@ -10,7 +10,11 @@ image regionOrange = im.Scale("regionOrange.png", 1280, 720)
 image regionRose = im.Scale("regionRose.png", 1280, 720)
 image regionRouge = im.Scale("regionRouge.png", 1280, 720)
 image regionVerte = im.Scale("regionVerte.png", 1280, 720)
-image regionViolette = im.Scale("regionViolette.png", 1280, 720)
+image boxInteragir1 = "boxInteragir1.png"
+image boxInteragir2 = "boxInteragir2.png"
+image boxInteragir3 = "boxInteragir3.png"
+image boxInteragir4 = "boxInteragir4.png"
+image boxInteragir5 = "boxInteragir5.png"
 
 
 
@@ -83,11 +87,21 @@ default regionRougeActive = False
 default regionVerteActive = False
 default regionVioletteActive = False
 
+default regionBeigeActionFaite = False
+default regionBleueActionFaite = False
+default regionGriseActionFaite = False
+default regionJauneActionFaite = False
+default regionOrangeActionFaite = False
+default regionRoseActionFaite = False
+default regionRougeActionFaite = False
+default regionVerteActionFaite = False
+default regionVioletteActionFaite = False
 
-
-
+transform dezoomInteractionChoix:
+    zoom 0.5
 label start:
     $ config.has_autosave = False
+    $ jour = 1
     "test"
     scene mapRegionGrise
     call screen vueTerritoire
@@ -104,116 +118,185 @@ label start:
 label interactionBeige :
     hide screen infoRegionBeige
     scene office
-    show pythie at left
+    show pythie at left     
+    call screen interactionBeige
+screen interactionBeige:
 #armees
+     imagebutton :
+            idle "boxInteragir1"
+            at dezoomInteractionChoix
+            xpos 300
+            ypos 100
+            action  Jump("ministreArmeeBeige")
+     imagebutton :
+            idle "boxInteragir2"
+            at dezoomInteractionChoix
+            xpos 680
+            ypos 100
+            action  Jump("ministreAgricultureBeige")
+     imagebutton :
+            idle "boxInteragir3"
+            at dezoomInteractionChoix
+            xpos 300
+            ypos 400
+            action  Jump("ministreCivilsBeige")
+     imagebutton :
+            idle "boxInteragir4"
+            at dezoomInteractionChoix
+            xpos 680
+            ypos 400
+            action  Jump("ministreFinancesBeige")
+     imagebutton :
+            idle "boxInteragir5"
+            at dezoomInteractionChoix
+            xpos 490
+            ypos 250
+            action  Jump("ministreAmbassadeurBeige")
+
+label ministreArmeeBeige:
+    p "Assistante convoquer moi le ministre des armées svp"
+    show armees at right
+    a "Vous m'avez demandé commandant ?"
+    p "Oui je voulais vous demander..."
     menu:
-        "Convoquer le ministre des armées":
-            p "Assistante convoquer moi le ministre des armées svp"
-            show armees at right
-            a "Vous m'avez demandé commandant ?"
-            p "Oui je voulais vous demander..."
-            menu:
-                "Requisitionner des troupes pour l'armée générale(30)":
-                    p "Je souhaite requisitionner des soldats pour augmenter la taille de mes armées"
-                    a "Très bien commandant "
-                    $ armeeGeneral += 30
-                    $ armeeRegionBeige -=  30
-                    return
-                "Donner des soldats à la région(30)":
-                    p "Je souhaite renforcer la zone je vous ais donc envoyé des soldats"
-                    a "Merci commandant"
-                    $ armeeRegionBeige += 30
-                    $ armeeGeneral -= 30
-                    return
+        "Requisitionner des troupes pour l'armée générale(30)":
+            p "Je souhaite requisitionner des soldats pour augmenter la taille de mes armées"
+            a "Très bien commandant "
+            $ armeeGeneral += 30
+            $ armeeRegionBeige -=  30
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Donner des soldats à la région(30)":
+            p "Je souhaite renforcer la zone je vous ais donc envoyé des soldats"
+            a "Merci commandant"
+            $ armeeRegionBeige += 30
+            $ armeeGeneral -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
 #agriculture
-        "Convoquer le ministre de l'agriculture":
-            p "Assistante convoquez moi le ministre de l'agriculture svp"
-            show agriculture at right
-            h "Vous m'avez demandé commandant ?"
-            p "Oui je voulais vous demander..."
-            menu:
-                "Requistionner de la nourriture pour la nourriture générale(30)":
-                    p "Je souhaite requisitionner de la nourriture"
-                    a "Très bien commandant "
-                    $ nourritureGeneral += 30
-                    $ nourritureRegionBeige -= 30
-                    return
-                "Donner de la nourriture(30)":
-                    p "Je vous envoie de la nourriture"
-                    a "Merci commandant"
-                    $ nourritureGeneral -= 30
-                    $ nourritureRegionBeige += 30
-                    return
+label ministreAgricultureBeige:
+    p "Assistante convoquez moi le ministre de l'agriculture svp"
+    show agriculture at right
+    h "Vous m'avez demandé commandant ?"
+    p "Oui je voulais vous demander..."
+    menu:
+        "Requistionner de la nourriture pour la nourriture générale(30)":
+            p "Je souhaite requisitionner de la nourriture"
+            a "Très bien commandant "
+            $ nourritureGeneral += 30
+            $ nourritureRegionBeige -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Donner de la nourriture(30)":
+            p "Je vous envoie de la nourriture"
+            a "Merci commandant"
+            $ nourritureGeneral -= 30
+            $ nourritureRegionBeige += 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
 #civils
-        "Convoquer le ministre des civils":
-            p "Assistante convoquer moi le ministre des civils svp"
-            show civil at right
-            c "Vous m'avez demandé commandant ?"
-            p "Oui je voulais vous demander..."
-            menu:
-                "Requistionner des civils pour les civils généraux(30)":
-                    p "Je souhaite requisitionner des civils"
-                    a "Très bien commandant "
-                    $ populationGeneral += 30
-                    $ populationRegionBeige -= 30
-                    return
-                "Donner des civils(30)":
-                    p "Je vous envoie des civils"
-                    a "Merci commandant"
-                    $ populationGeneral -= 30
-                    $ populationRegionBeige += 30
-                    return
+label ministreCivilsBeige:
+    p "Assistante convoquer moi le ministre des civils svp"
+    show civil at right
+    c "Vous m'avez demandé commandant ?"
+    p "Oui je voulais vous demander..."
+    menu:
+        "Requistionner des civils pour les civils généraux(30)":
+            p "Je souhaite requisitionner des civils"
+            a "Très bien commandant "
+            $ populationGeneral += 30
+            $ populationRegionBeige -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Donner des civils(30)":
+            p "Je vous envoie des civils"
+            a "Merci commandant"
+            $ populationGeneral -= 30
+            $ populationRegionBeige += 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
 #finances
-        "Convoquer le ministre des finances":
-            p "Assistante convoquer moi le ministre des finances svp"
-            show religion at right
-            h "Vous m'avez demandé commandant ?"
-            p "Oui je voulais vous demander..."
-            menu:
-                "Requistionner de l'argent pour les caisses générales(30)":
-                    p "Je souhaite requisitionner de l'argent"
-                    a "Très bien commandant "
-                    $ argentGeneral += 30
-                    $ argentRegionBeige -= 30
-                    return
-                "Donner de l'argent(30)":
-                    p "Je vous envoie de l'argent"
-                    a "Merci commandant"
-                    $ argentGeneral -= 30
-                    $ argentRegionBeige += 30
-                    return
+label ministreFinancesBeige:
+    p "Assistante convoquer moi le ministre des finances svp"
+    show religion at right
+    h "Vous m'avez demandé commandant ?"
+    p "Oui je voulais vous demander..."
+    menu:
+        "Requistionner de l'argent pour les caisses générales(30)":
+            p "Je souhaite requisitionner de l'argent"
+            a "Très bien commandant "
+            $ argentGeneral += 30
+            $ argentRegionBeige -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Donner de l'argent(30)":
+            p "Je vous envoie de l'argent"
+            a "Merci commandant"
+            $ argentGeneral -= 30
+            $ argentRegionBeige += 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
 #ambassadeur
-        "Convoquer l'ambassadeur de cette région" :
-            p "Assistante convoquer moi l'ambassadeur de cette région svp"
-            show ambassadeur at right
-            h "Vous m'avez demandé commandant ?"
-            p "Oui je voulais vous demander..."
-            menu :
-                "Augmenter la taille de l'armée de cette région(+30 armee / -30 population)":
-                    p "Je souhaite que vous entrainez des civils en soldats"
-                    a "Très bien commandant "
-                    $ populationRegionBeige -= 30
-                    $ armeeRegionBeige += 30
-                    return
-                "Acheter de la nourriture(+30 nourriture / -15 argent -15 population)":
-                    p "Je souhaite que vous produisiez plus de nourriture"
-                    a "Très bien commandant "
-                    $ nourritureGeneral += 30
-                    $ populationRegionBeige -= 15
-                    $ argentRegionBeige -= 15
-                    return
-                "Vendre de la nourriture(+30 argent / -30 nourriture)":
-                    p "Je souhaite que vous vendiez de la nourriture contre de l'argent"
-                    a "Très bien commandant "
-                    $ argentRegionBeige += 30
-                    $ nourritureRegionBeige -= 30
-                    return
-                "Réintégrer des soldats dans la vie civile(+30 population / -30 armee)":
-                    p "Je souhaite que des soldats retournent au statut de civil"
-                    a "Très bien commandant "
-                    $ populationRegionBeige += 30
-                    $ armeeRegionBeige -= 30
-                    return
+label ministreAmbassadeurBeige:
+    p "Assistante convoquer moi l'ambassadeur de cette région svp"
+    show ambassadeur at right
+    h "Vous m'avez demandé commandant ?"
+    p "Oui je voulais vous demander..."
+    menu :
+        "Augmenter la taille de l'armée de cette région(+30 armee / -30 population)":
+            p "Je souhaite que vous entrainez des civils en soldats"
+            a "Très bien commandant "
+            $ populationRegionBeige -= 30
+            $ armeeRegionBeige += 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Acheter de la nourriture(+30 nourriture / -15 argent -15 population)":
+            p "Je souhaite que vous produisiez plus de nourriture"
+            a "Très bien commandant "
+            $ nourritureGeneral += 30
+            $ populationRegionBeige -= 15
+            $ argentRegionBeige -= 15
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Vendre de la nourriture(+30 argent / -30 nourriture)":
+            p "Je souhaite que vous vendiez de la nourriture contre de l'argent"
+            a "Très bien commandant "
+            $ argentRegionBeige += 30
+            $ nourritureRegionBeige -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        "Réintégrer des soldats dans la vie civile(+30 population / -30 armee)":
+            p "Je souhaite que des soldats retournent au statut de civil"
+            a "Très bien commandant "
+            $ populationRegionBeige += 30
+            $ armeeRegionBeige -= 30
+            $ regionBeigeActionFaite = True
+            hide screen interactionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+
+###################################################################################################################
 
 
 
@@ -227,11 +310,7 @@ label interactionBeige :
 
 #############################################
 ##################BEIGE######################
-label actionRegionBeige:
-    call screen actionRegionBeige
-screen actionRegionBeige:
-    $ popUpInfoRegionOn=False
-    image "../images/diplomatie.jpg"
+
 
 label declarerGuerreRegionBeige:
     call screen declarerGuerreRegionBeige
@@ -245,7 +324,6 @@ transform exit_zoom:
     zoom 0.05
 
 screen infoRegionBeige :
-    #if(popUpInfoRegionOn==False):
         $ popUpInfoRegionOn=True
         image "../images/carre_gris.png":
             at carre_zoom
@@ -275,16 +353,17 @@ screen infoRegionBeige :
         text "%d" % nourritureRegionBeige:
             xpos 910
             ypos 170
-        imagebutton :
-            idle "../images/interagir.png"
-            xpos 800
-            ypos 220
-            action Jump("interactionBeige")
-        imagebutton :
-            idle "../images/attaquer.png"
-            xpos 800
-            ypos 280
-            action  Jump("declarerGuerreRegionBeige")
+        if(regionBeigeActionFaite==False):
+            imagebutton :
+                idle "../images/interagir.png"
+                xpos 800
+                ypos 220
+                action Jump("interactionBeige")
+            imagebutton :
+                idle "../images/attaquer.png"
+                xpos 800
+                ypos 280
+                action  Jump("declarerGuerreRegionBeige")
         imagebutton :
             idle "../images/exit.png"
             at exit_zoom

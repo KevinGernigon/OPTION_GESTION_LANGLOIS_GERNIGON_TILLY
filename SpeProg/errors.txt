@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 112: u'menu' is not a keyword argument or valid child for the screen statement.
-    menu:
-        ^
+File "game/script.rpy", line 285: expected statement.
+    e
+     ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Mon Mar 15 00:47:21 2021
+Thu Mar 18 00:20:05 2021

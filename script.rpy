@@ -108,14 +108,6 @@ label start:
     call screen vueTerritoire
 
 
-
-
-
-
-
-
-
-
 label interactionBeige :
     hide screen infoRegionBeige
     scene office
@@ -1031,8 +1023,8 @@ screen infoRegionViolette :
 # Le jeu commence ici
 
 
-
 screen vueTerritoire:
+
     #$ popUpInfoRegionOn=False
     if regionBeigeActive==True:
         imagebutton:
@@ -1088,3 +1080,29 @@ screen vueTerritoire:
             xpos 42
             ypos 383
             action Show("infoRegionViolette")
+
+    #text pop_up en haut à droite
+    text "Armée Générale :" :
+        yalign 0.02
+        xalign 0.9
+    text "%d" % armeeGeneral :
+        yalign 0.02
+        xalign 0.97
+    text "Nourriture Générale :" :
+        yalign 0.06
+        xalign 0.9
+    text "%d" % nourritureGeneral:
+        yalign 0.06
+        xalign 0.97
+    text "Population Générale :" :
+        yalign 0.1
+        xalign 0.9
+    text "%d" % populationGeneral :
+        yalign 0.1
+        xalign 0.97
+    text "Finances Générales :" :
+        yalign 0.14
+        xalign 0.9
+    text "%d" % argentGeneral :
+        yalign 0.14
+        xalign 0.97

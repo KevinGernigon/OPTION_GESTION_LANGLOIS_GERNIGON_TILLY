@@ -119,6 +119,16 @@ default niveauRegionRouge = 1
 default niveauRegionVerte = 1
 default niveauRegionViolette = 1
 
+default multiplierBeige = 0.1
+default multiplierBleue = 0.1
+default multiplierGrise = 0.1
+default multiplierJaune = 0.1
+default multiplierOrange = 0.1
+default multiplierRose = 0.1
+default multiplierRouge = 0.1
+default multiplierVerte = 0.1
+default multiplierViolette = 0.1
+
 default jour = 0
 
 
@@ -1423,60 +1433,170 @@ label victoire:
         jump gestionRevenu
 
 label gestionRevenu:
-    default multiplier = 0.1
 
-    if niveauRegionBeige == 1:
-        $ armeeRegionBeige = 100
-        $ argentRegionBeige = 90
-        $ populationRegionBeige = 150
-        $ nourritureRegionBeige = 60
-        
-    $ niveauRegionBleue = 1
-    $ niveauRegionGrise = 1
-    $ niveauRegionJaune = 1
-    $ niveauRegionOrange = 1
-    $ niveauRegionRose = 1
-    $ niveauRegionRouge = 1
-    $ niveauRegionVerte = 1
-    $ niveauRegionViolette = 1
+    #Beige
+    if niveauRegionBeige == 2:
+        $ multiplierBeige = 0.2
+
+    elif niveauRegionBeige == 3:
+        $ multiplierBeige = 0.3
+
+    elif niveauRegionBeige == 4:
+        $ multiplierBeige = 0.4
+
+    elif niveauRegionBeige == 5:
+        $ multiplierBeige = 0.5
+
+    $ armeeRegionBeige += armeeRegionBeige * multiplier
+    $ argentRegionBeige += argentRegionBeige * multiplier
+    $ populationRegionBeige += populationRegionBeige * multiplier
+    $ nourritureRegionBeige += nourritureRegionBeige * multiplier
 
 
-    $ armeeRegionBleue = 150
-    $ argentRegionBleue = 90
-    $ populationRegionBleue = 85
-    $ nourritureRegionBleue = 75
+    #Bleue
+    if niveauRegionBleue == 2:
+        $ multiplierBleue = 0.2
 
-    $ armeeRegionGrise = 100
-    $ argentRegionGrise = 100
-    $ populationRegionGrise = 60
-    $ nourritureRegionGrise = 140
+    if niveauRegionBleue == 3:
+        $ multiplierBleue = 0.3
 
-    $ armeeRegionJaune = 120
-    $ argentRegionJaune = 90
-    $ populationRegionJaune = 110
-    $ nourritureRegionJaune = 80
+    if niveauRegionBleue == 4:
+        $ multiplierBleue = 0.4
 
-    $ armeeRegionOrange = 100
-    $ argentRegionOrange = 110
-    $ populationRegionOrange = 70
-    $ nourritureRegionOrange = 120
+    if niveauRegionBleue == 5:
+        $ multiplierBleue = 0.5
 
-    $ armeeRegionRose = 120
-    $ argentRegionRose = 90
-    $ populationRegionRose = 120
-    $ nourritureRegionRose = 70
+    $ armeeRegionBleue += armeeRegionBleue * multiplierBleue
+    $ armeeRegionBleue += armeeRegionBleue * multiplierBleue
+    $ armeeRegionBleue += armeeRegionBleue * multiplierBleue
+    $ armeeRegionBleue += armeeRegionBleue * multiplierBleue
 
-    $ armeeRegionRouge = 80
-    $ argentRegionRouge = 90
-    $ populationRegionRouge = 130
-    $ nourritureRegionRouge = 100
+    #Grise
+    if niveauRegionGrise == 2:
+        $ multiplierGrise = 0.2
 
-    $ armeeRegionVerte = 80
-    $ argentRegionVerte = 90
-    $ populationRegionVerte = 140
-    $ nourritureRegionVerte = 90
+    if niveauRegionGrise == 3:
+        $ multiplierGrise = 0.3
 
-    $ armeeRegionViolette = 60
-    $ argentRegionViolette = 100
-    $ populationRegionViolette = 100
-    $ nourritureRegionViolette = 140
+    if niveauRegionGrise == 4:
+        $ multiplierGrise = 0.4
+
+    if niveauRegionGrise == 5:
+        $ multiplierGrise = 0.5
+
+    $ armeeRegionGrise += armeeRegionGrise * multiplierGrise
+    $ armeeRegionGrise += armeeRegionGrise * multiplierGrise
+    $ armeeRegionGrise += armeeRegionGrise * multiplierGrise
+    $ armeeRegionGrise += armeeRegionGrise * multiplierGrise
+
+    #Jaune
+    if niveauRegionJaune == 2:
+        $ multiplierJaune = 0.2
+
+    if niveauRegionJaune == 3:
+        $ multiplierJaune = 0.3
+
+    if niveauRegionJaune == 4:
+        $ multiplierJaune = 0.4
+
+    if niveauRegionJaune == 5:
+        $ multiplierJaune = 0.5
+
+    $ armeeRegionJaune += armeeRegionJaune * multiplierJaune
+    $ armeeRegionJaune += armeeRegionJaune * multiplierJaune
+    $ armeeRegionJaune += armeeRegionJaune * multiplierJaune
+    $ armeeRegionJaune += armeeRegionJaune * multiplierJaune
+
+    #Orange
+    if niveauRegionOrange == 2:
+        $ multiplierOrange = 0.2
+
+    if niveauRegionOrange == 3:
+        $ multiplierOrange = 0.3
+
+    if niveauRegionOrange == 4:
+        $ multiplierOrange = 0.4
+
+    if niveauRegionOrange == 5:
+        $ multiplierOrange = 0.5
+
+    $ armeeRegionOrange += armeeRegionOrange * multiplierOrange
+    $ armeeRegionOrange += armeeRegionOrange * multiplierOrange
+    $ armeeRegionOrange += armeeRegionOrange * multiplierOrange
+    $ armeeRegionOrange += armeeRegionOrange * multiplierOrange
+
+    #Rose
+    if niveauRegionRose == 2:
+        $ multiplierRose = 0.2
+
+    if niveauRegionRose == 3:
+        $ multiplierRose = 0.3
+
+    if niveauRegionRose == 4:
+        $ multiplierRose = 0.4
+
+    if niveauRegionRose == 5:
+        $ multiplierRose = 0.5
+
+    $ armeeRegionRose += armeeRegionRose * multiplierRose
+    $ armeeRegionRose += armeeRegionRose * multiplierRose
+    $ armeeRegionRose += armeeRegionRose * multiplierRose
+    $ armeeRegionRose += armeeRegionRose * multiplierRose
+
+    #Rouge
+    if niveauRegionRouge == 2:
+        $ multiplierRouge = 0.2
+
+    if niveauRegionRouge == 3:
+        $ multiplierRouge = 0.3
+
+    if niveauRegionRouge == 4:
+        $ multiplierRouge = 0.4
+
+    if niveauRegionRouge == 5:
+        $ multiplierRouge = 0.5
+
+    $ armeeRegionRouge += armeeRegionRouge * multiplierRouge
+    $ armeeRegionRouge += armeeRegionRouge * multiplierRouge
+    $ armeeRegionRouge += armeeRegionRouge * multiplierRouge
+    $ armeeRegionRouge += armeeRegionRouge * multiplierRouge
+
+
+    #Verte
+    if niveauRegionVerte == 2:
+        $ multiplierVerte = 0.2
+
+    if niveauRegionVerte == 3:
+        $ multiplierVerte = 0.3
+
+    if niveauRegionVerte == 4:
+        $ multiplierVerte = 0.4
+
+    if niveauRegionVerte == 5:
+        $ multiplierVerte = 0.5
+
+    $ armeeRegionVerte += armeeRegionVerte * multiplierVerte
+    $ armeeRegionVerte += armeeRegionVerte * multiplierVerte
+    $ armeeRegionVerte += armeeRegionVerte * multiplierVerte
+    $ armeeRegionVerte += armeeRegionVerte * multiplierVerte
+
+    #Violette
+    if niveauRegionViolette == 2:
+        $ multiplierViolette = 0.2
+
+    if niveauRegionViolette == 3:
+        $ multiplierViolette = 0.3
+
+    if niveauRegionViolette == 4:
+        $ multiplierViolette = 0.4
+
+    if niveauRegionViolette == 5:
+        $ multiplierViolette = 0.5
+
+    $ armeeRegionViolette += armeeRegionViolette * multiplierViolette
+    $ armeeRegionViolette += armeeRegionViolette * multiplierViolette
+    $ armeeRegionViolette += armeeRegionViolette * multiplierViolette
+    $ armeeRegionViolette += armeeRegionViolette * multiplierViolette
+
+
+    call screen vueTerritoire

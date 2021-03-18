@@ -88,7 +88,7 @@ default argentRegionViolette = 100
 default populationRegionViolette = 100
 default nourritureRegionViolette = 140
 
-default regionBeigeActive = True
+default regionBeigeActive = False
 default regionBleueActive = False
 default regionGriseActive = False
 default regionJauneActive = False
@@ -114,7 +114,7 @@ label start:
     $ jour = 1
     "test"
     scene mapRegionGrise
-    call screen vueTerritoire
+    call screen choixRegionDepart
 
 
 transform icons :
@@ -1236,16 +1236,87 @@ screen infoRegionViolette :
 
 
 
-
+screen choixRegionDepart:
+        #$ popUpInfoRegionOn=False
+        imagebutton:
+            idle "regionBeige.png"
+            xpos 715
+            ypos 26
+            action Jump("startRegionBeige")
+        imagebutton:
+            idle "regionBleue.png"
+            xpos 415
+            ypos 280
+            action Jump("startRegionBleue")
+        imagebutton:
+            idle "regionGrise.png"
+            xpos 265
+            ypos 45
+            action Jump("startRegionGrise")
+        imagebutton:
+            idle "regionJaune.png"
+            xpos 370
+            ypos 90
+            action Jump("startRegionJaune")
+        imagebutton:
+            idle "regionOrange.png"
+            xpos 155
+            ypos 309
+            action Jump("startRegionJaune")
+        imagebutton:
+            idle "regionRose.png"
+            xpos 73
+            ypos 104
+            action Jump("startRegionRose")
+        imagebutton:
+            idle "regionRouge.png"
+            xpos 720
+            ypos 295
+            action Jump("startRegionRouge")
+        imagebutton:
+            idle "regionVerte.png"
+            xpos 711
+            ypos 422
+            action Jump("startRegionVerte")
+        imagebutton:
+            idle "regionViolette.png"
+            xpos 42
+            ypos 383
+            action Jump("startRegionViolette")
+  
 
 
 # Le jeu commence ici
 transform dezoom_icons_generales:
     zoom 0.2
 
+label startRegionBeige:
+    $ regionBeigeActive = True
+    call screen vueTerritoire
+label startRegionBleue:
+    $ regionBleueActive = True
+    call screen vueTerritoire
+label startRegionGrise:
+    $ regionGriseActive = True
+    call screen vueTerritoire
+label startRegionJaune:
+    $ regionJauneActive = True
+    call screen vueTerritoire
+label startRegionRose:
+    $ regionRoseActive = True
+    call screen vueTerritoire
+label startRegionRouge:
+    $ regionRougeActive = True
+    call screen vueTerritoire
+label startRegionVerte:
+    $ regionVerteActive = True
+    call screen vueTerritoire
+label startRegionViolette:
+    $ regionVioletteActive = True
+    call screen vueTerritoire
+
 
 screen vueTerritoire:
-
     #$ popUpInfoRegionOn=False
     if regionBeigeActive==True:
         imagebutton:

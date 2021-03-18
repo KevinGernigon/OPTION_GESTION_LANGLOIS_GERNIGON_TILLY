@@ -73,6 +73,31 @@ image foodJaune = "nourritureJaune.png"
 image foodOrange = "nourritureOrange.png"
 image foodBleue = "nourritureBleue.png"
 
+#image des différents boosts
+image boostGeneral = "boost.png"
+image boostGeneral = "boostBeige.png"
+image boostGeneral = "boostBleue.png"
+image boostGeneral = "boostVerte.png"
+image boostGeneral = "boostGrise.png"
+image boostGeneral = "boostRose.png"
+image boostGeneral = "boostRouge.png"
+image boostGeneral = "boostViolette.png"
+image boostGeneral = "boostJaune.png"
+image boostGeneral = "boostOrange.png"
+
+#images des différents superboosts
+
+image superboostGeneral = "superboost.png"
+image superboostGeneral = "superboostBeige.png"
+image superboostGeneral = "superboostBleue.png"
+image superboostGeneral = "superboostVerte.png"
+image superboostGeneral = "superboostGrise.png"
+image superboostGeneral = "superboostRose.png"
+image superboostGeneral = "superboostRouge.png"
+image superboostGeneral = "superboostViolette.png"
+image superboostGeneral = "superboostJaune.png"
+image superboostGeneral = "superboostOrange.png"
+
 define p = Character(_('Pythie'), color="#c8ffc8")
 define a = Character(_('Ministre des armées'), color="#c8ffc8")
 define h = Character(_('Ministre de l"agriculture'), color="#c8ffc8")
@@ -348,7 +373,7 @@ label donTroupesArmeeBeige:
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
-                call screen vueTerritoire²²²
+                call screen vueTerritoire
 
 
 

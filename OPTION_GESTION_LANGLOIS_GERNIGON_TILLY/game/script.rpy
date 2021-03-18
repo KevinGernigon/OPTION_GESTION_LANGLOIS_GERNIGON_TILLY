@@ -1447,10 +1447,10 @@ label gestionRevenu:
     elif niveauRegionBeige == 5:
         $ multiplierBeige = 0.5
 
-    $ armeeRegionBeige += armeeRegionBeige * multiplier
-    $ argentRegionBeige += argentRegionBeige * multiplier
-    $ populationRegionBeige += populationRegionBeige * multiplier
-    $ nourritureRegionBeige += nourritureRegionBeige * multiplier
+    $ armeeRegionBeige += armeeRegionBeige * multiplierBeige
+    $ argentRegionBeige += argentRegionBeige * multiplierBeige
+    $ populationRegionBeige += populationRegionBeige * multiplierBeige
+    $ nourritureRegionBeige += nourritureRegionBeige * multiplierBeige
 
 
     #Bleue

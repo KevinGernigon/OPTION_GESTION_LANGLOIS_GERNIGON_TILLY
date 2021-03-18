@@ -33,49 +33,49 @@ default populationGeneral = 0
 default nourritureGeneral = 0
 
 default armeeRegionBeige = 100
-default argentRegionBeige = 100
+default argentRegionBeige = 90
 default populationRegionBeige = 150
-default nourritureRegionBeige = 100
+default nourritureRegionBeige = 60
 
 default armeeRegionBleue = 150
-default argentRegionBleue = 100
+default argentRegionBleue = 90
 default populationRegionBleue = 85
-default nourritureRegionBleue = 100
+default nourritureRegionBleue = 75
 
 default armeeRegionGrise = 100
 default argentRegionGrise = 100
 default populationRegionGrise = 60
-default nourritureRegionGrise = 100
+default nourritureRegionGrise = 140
 
 default armeeRegionJaune = 120
-default argentRegionJaune = 100
+default argentRegionJaune = 90
 default populationRegionJaune = 110
-default nourritureRegionJaune = 100
+default nourritureRegionJaune = 80
 
 default armeeRegionOrange = 100
-default argentRegionOrange = 0
+default argentRegionOrange = 110
 default populationRegionOrange = 70
-default nourritureRegionOrange = 100
+default nourritureRegionOrange = 120
 
 default armeeRegionRose = 120
-default argentRegionRose = 100
+default argentRegionRose = 90
 default populationRegionRose = 120
-default nourritureRegionRose = 100
+default nourritureRegionRose = 70
 
 default armeeRegionRouge = 80
-default argentRegionRouge = 130
-default populationRegionRouge = 0
+default argentRegionRouge = 90
+default populationRegionRouge = 130
 default nourritureRegionRouge = 100
 
 default armeeRegionVerte = 80
-default argentRegionVerte = 100
+default argentRegionVerte = 90
 default populationRegionVerte = 140
-default nourritureRegionVerte = 100
+default nourritureRegionVerte = 90
 
 default armeeRegionViolette = 60
-default argentRegionViolette = 150
+default argentRegionViolette = 100
 default populationRegionViolette = 100
-default nourritureRegionViolette = 100
+default nourritureRegionViolette = 140
 
 default regionBeigeActive = True
 default regionBleueActive = False

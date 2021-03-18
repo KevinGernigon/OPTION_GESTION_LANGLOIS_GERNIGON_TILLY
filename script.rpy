@@ -61,6 +61,18 @@ image popJaune = "populationJaune.png"
 image popOrange = "populationOrange.png"
 image popBleue = "populationBleue.png"
 
+#images des nourritures différentes
+image foodGeneral = "leaf.png"
+image foodBeige = "nourritureBeige.png"
+image foodRouge = "nourritureRouge.png"
+image foodViolette = "nourritureViolette.png"
+image foodVerte = "nourritureVerte.png"
+image foodGrise = "nourritureGrise.png"
+image foodRose = "nourritureRose.png"
+image foodJaune = "nourritureJaune.png"
+image foodOrange = "nourritureOrange.png"
+image foodBleue = "nourritureBleue.png"
+
 define p = Character(_('Pythie'), color="#c8ffc8")
 define a = Character(_('Ministre des armées'), color="#c8ffc8")
 define h = Character(_('Ministre de l"agriculture'), color="#c8ffc8")
@@ -122,7 +134,7 @@ default argentRegionViolette = 100
 default populationRegionViolette = 100
 default nourritureRegionViolette = 140
 
-default regionBeigeActive = True
+default regionBeigeActive = False
 default regionBleueActive = False
 default regionGriseActive = False
 default regionJauneActive = False
@@ -148,7 +160,7 @@ label start:
     $ jour = 1
     "test"
     scene mapRegionGrise
-    call screen vueTerritoire
+    call screen choixRegionDepart
 
 
 transform icons :
@@ -192,33 +204,57 @@ screen statsInteractionBeige:
         xpos 1150
         ypos 20
 screen interactionBeige:
-
-
     imagebutton :
         idle "boxInteragir1"
         xpos 300
         ypos 100
         action  Jump("ministreArmeeBeige")
+    text "Armée":
+        xpos 300
+        ypos 200
+        outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir2"
         xpos 680
         ypos 100
         action  Jump("ministreAgricultureBeige")
+    text "Nourriture":
+        xpos 820
+        ypos 200
+        outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir3"
         xpos 300
         ypos 400
         action  Jump("ministreCivilsBeige")
+    text "Civils":
+        xpos 300
+        ypos 500
+        outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir4"
         xpos 680
         ypos 400
         action  Jump("ministreFinancesBeige")
+    text "Finances":
+        xpos 820
+        ypos 500
+        outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir5"
         xpos 490
         ypos 250
         action  Jump("ministreAmbassadeurBeige")
+    text "Ambassade":
+        xalign 0.43
+        yalign 0.58
+        outlines [ (3, "#000", 0, 0) ]
+
+
+# dezoom pour les icons de choix
+transform choix_icons :
+    zoom 0.5
+
 #armees
 label ministreArmeeBeige:
     p "Assistante convoquer moi le ministre des armées svp"
@@ -229,11 +265,9 @@ label ministreArmeeBeige:
 label ministreArmeeBeige2 :
     call screen ministreArmeeBeige2
 
-# dezoom pour les icons de choix
-transform choix_icons :
-    zoom 0.5
-
 screen ministreArmeeBeige2:
+
+#choix gauche
     imagebutton :
         idle "armyGeneral"
         xpos 280
@@ -243,6 +277,7 @@ screen ministreArmeeBeige2:
     text "+30" :
         xpos 300
         yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
     imagebutton :
         idle "armyBeige"
         xpos 370
@@ -252,11 +287,36 @@ screen ministreArmeeBeige2:
     text "-30" :
         xpos 400
         yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Réquisition de soldats":
+        xpos 250
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
+#choix droite
     imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
+        idle "armyBeige"
+        xpos 950
+        yalign 0.5
+        at choix_icons
         action  Jump("donTroupesArmeeBeige")
+    text "+30" :
+        xpos 980
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "armyGeneral"
+        xpos 850
+        yalign 0.5
+        at choix_icons
+        action Jump("donTroupesArmeeBeige")
+    text "-30" :
+        xpos 880
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Don de soldats":
+        xpos 870
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
 
 label requisitionTroupesArmeeBeige:
             p "Je souhaite requisitionner des soldats pour augmenter la taille de mes armées"
@@ -269,6 +329,7 @@ label requisitionTroupesArmeeBeige:
                 a "Très bien commandant "
                 $ armeeGeneral += 30
                 $ armeeRegionBeige -=  30
+                $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
@@ -287,7 +348,7 @@ label donTroupesArmeeBeige:
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
-                call screen vueTerritoire
+                call screen vueTerritoire²²²
 
 
 
@@ -304,16 +365,56 @@ label ministreAgricultureBeige2 :
     call screen ministreAgricultureBeige2
 
 screen ministreAgricultureBeige2:
+#choix gauche
     imagebutton :
-        idle "boxInteragir1"
-        xpos 300
-        ypos 100
+        idle "foodGeneral"
+        xpos 280
+        yalign 0.5
+        at choix_icons
         action  Jump("requisitionNourritureAgricultureBeige")
+    text "+30" :
+        xpos 300
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
     imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
+        idle "foodBeige"
+        xpos 370
+        yalign 0.5
+        at choix_icons
+        action Jump("requisitionNourritureAgricultureBeige")
+    text "-30" :
+        xpos 400
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Réquisition de nourriture":
+        xpos 250
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "foodBeige"
+        xpos 950
+        yalign 0.5
+        at choix_icons
         action  Jump("donNourritureAgricultureBeige")
+    text "+30" :
+        xpos 980
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "foodGeneral"
+        xpos 850
+        yalign 0.5
+        at choix_icons
+        action Jump("donNourritureAgricultureBeige")
+    text "-30" :
+        xpos 870
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Don de nourriture":
+        xpos 860
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
 
 label requisitionNourritureAgricultureBeige:
             p "Je souhaite requisitionner de la nourriture"
@@ -364,16 +465,56 @@ label ministreCivilsBeige2 :
     call screen ministreCivilsBeige2
 
 screen ministreCivilsBeige2:
+#choix gauche
     imagebutton :
-        idle "boxInteragir1"
-        xpos 300
-        ypos 100
+        idle "popGeneral"
+        xpos 280
+        yalign 0.5
+        at choix_icons
         action  Jump("requisitionCivilsBeige")
+    text "+30" :
+        xpos 300
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
     imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
+        idle "popBeige"
+        xpos 370
+        yalign 0.5
+        at choix_icons
+        action Jump("requisitionCivilsBeige")
+    text "-30" :
+        xpos 400
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Réquisition de civils":
+        xpos 270
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "popBeige"
+        xpos 950
+        yalign 0.5
+        at choix_icons
         action  Jump("donCivilsBeige")
+    text "+30" :
+        xpos 980
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "popGeneral"
+        xpos 850
+        yalign 0.5
+        at choix_icons
+        action Jump("donCivilsBeige")
+    text "-30" :
+        xpos 880
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Don de civils":
+        xpos 880
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
 
 label requisitionCivilsBeige:
             p "Je souhaite requisitionner des civils"
@@ -427,16 +568,56 @@ label ministreFinancesBeige2 :
     call screen ministreFinancesBeige2
 
 screen ministreFinancesBeige2:
+#choix gauche
     imagebutton :
-        idle "boxInteragir1"
-        xpos 300
-        ypos 100
+        idle "financesGeneral"
+        xpos 280
+        yalign 0.5
+        at choix_icons
         action  Jump("requisitionFinancesBeige")
+    text "+30" :
+        xpos 300
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
     imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
+        idle "financesBeige"
+        xpos 370
+        yalign 0.5
+        at choix_icons
+        action Jump("requisitionFinancesBeige")
+    text "-30" :
+        xpos 400
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Réquisition d'argent":
+        xpos 260
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "financesBeige"
+        xpos 950
+        yalign 0.5
+        at choix_icons
         action  Jump("donFinancesBeige")
+    text "+30" :
+        xpos 980
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "financesGeneral"
+        xpos 850
+        yalign 0.5
+        at choix_icons
+        action Jump("donFinancesBeige")
+    text "-30" :
+        xpos 880
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+    text "Don d'argent":
+        xpos 880
+        yalign 0.65
+        outlines [ (3, "#000", 0, 0) ]
 
 label requisitionFinancesBeige:
             p "Je souhaite requisitionner de l'argent"
@@ -484,27 +665,120 @@ label ministreAmbassadeurBeige2 :
     call screen ministreAmbassadeurBeige2
 
 screen ministreAmbassadeurBeige2:
-    imagebutton :
-        idle "boxInteragir1"
-        xpos 300
-        ypos 100
-        action  Jump("augmenterArmeeEmbassadeurBeige")
-    imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
-        action  Jump("augmenterNourritureAmbassadeurBeige")
-    imagebutton :
-        idle "boxInteragir2"
-        xpos 300
-        ypos 400
-        action  Jump("vendreNourritureAmbassadeurBeige")
-    imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 400
-        action  Jump("reintegrerSoldatsAmbassadeurBeige")
 
+#choix haut-gauche
+    imagebutton :
+        idle "armyBeige"
+        xalign 0.295
+        yalign 0.3
+        at choix_icons
+        action  Jump("augmenterArmeeEmbassadeurBeige")
+    text "+30" :
+        xalign 0.3
+        yalign 0.4
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "popBeige"
+        xalign 0.38
+        yalign 0.3
+        at choix_icons
+        action Jump("augmenterArmeeEmbassadeurBeige")
+    text "-30" :
+        xalign 0.38
+        yalign 0.4
+        outlines [ (2, "#000", 0, 0) ]
+    text "Entraînement de soldats":
+        xpos 310
+        yalign 0.45
+        outlines [ (3, "#000", 0, 0) ]
+
+#choix haut-droite
+    imagebutton :
+        idle "foodBeige"
+        xalign 0.6
+        yalign 0.3
+        at choix_icons
+        action  Jump("augmenterNourritureAmbassadeurBeige")
+    text "+30" :
+        xalign 0.6
+        yalign 0.41
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "popBeige"
+        xalign 0.70
+        yalign 0.3
+        at choix_icons
+        action Jump("augmenterNourritureAmbassadeurBeige")
+    text "-15" :
+        xalign 0.69
+        yalign 0.41
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "financesBeige"
+        xalign 0.8
+        yalign 0.3
+        at choix_icons
+        action Jump("augmenterNourritureAmbassadeurBeige")
+    text "-15" :
+        xalign 0.78
+        yalign 0.41
+        outlines [ (2, "#000", 0, 0) ]
+    text "Production de nourriture":
+        xpos 750
+        yalign 0.45
+        outlines [ (3, "#000", 0, 0) ]
+
+#choix bas-gauche
+    imagebutton :
+        idle "financesBeige"
+        xalign 0.295
+        yalign 0.7
+        at choix_icons
+        action  Jump("vendreNourritureAmbassadeurBeige")
+    text "+30" :
+        xalign 0.3
+        yalign 0.77
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "foodBeige"
+        xalign 0.38
+        yalign 0.7
+        at choix_icons
+        action Jump("vendreNourritureAmbassadeurBeige")
+    text "-30" :
+        xalign 0.38
+        yalign 0.77
+        outlines [ (2, "#000", 0, 0) ]
+    text "Vente de nourriture":
+        xpos 330
+        yalign 0.82
+        outlines [ (3, "#000", 0, 0) ]
+
+#choix bas-droite
+    imagebutton :
+        idle "popBeige"
+        xalign 0.695
+        yalign 0.7
+        at choix_icons
+        action  Jump("reintegrerSoldatsAmbassadeurBeige")
+    text "+30" :
+        xalign 0.69
+        yalign 0.77
+        outlines [ (2, "#000", 0, 0) ]
+    imagebutton :
+        idle "armyBeige"
+        xalign 0.635
+        yalign 0.7
+        at choix_icons
+        action Jump("reintegrerSoldatsAmbassadeurBeige")
+    text "-30" :
+        xalign 0.628
+        yalign 0.77
+        outlines [ (2, "#000", 0, 0) ]
+    text "Retour à la vie civile":
+        xpos 740
+        yalign 0.82
+        outlines [ (3, "#000", 0, 0) ]
 
 label augmenterArmeeEmbassadeurBeige:
             p "Je souhaite que vous entrainez des civils en soldats"
@@ -1287,6 +1561,53 @@ screen infoRegionViolette :
 
 
 
+screen choixRegionDepart:
+        #$ popUpInfoRegionOn=False
+        imagebutton:
+            idle "regionBeige.png"
+            xpos 715
+            ypos 26
+            action Jump("startRegionBeige")
+        imagebutton:
+            idle "regionBleue.png"
+            xpos 415
+            ypos 280
+            action Jump("startRegionBleue")
+        imagebutton:
+            idle "regionGrise.png"
+            xpos 265
+            ypos 45
+            action Jump("startRegionGrise")
+        imagebutton:
+            idle "regionJaune.png"
+            xpos 370
+            ypos 90
+            action Jump("startRegionJaune")
+        imagebutton:
+            idle "regionOrange.png"
+            xpos 155
+            ypos 309
+            action Jump("startRegionJaune")
+        imagebutton:
+            idle "regionRose.png"
+            xpos 73
+            ypos 104
+            action Jump("startRegionRose")
+        imagebutton:
+            idle "regionRouge.png"
+            xpos 720
+            ypos 295
+            action Jump("startRegionRouge")
+        imagebutton:
+            idle "regionVerte.png"
+            xpos 711
+            ypos 422
+            action Jump("startRegionVerte")
+        imagebutton:
+            idle "regionViolette.png"
+            xpos 42
+            ypos 383
+            action Jump("startRegionViolette")
 
 
 
@@ -1294,9 +1615,33 @@ screen infoRegionViolette :
 transform dezoom_icons_generales:
     zoom 0.2
 
+label startRegionBeige:
+    $ regionBeigeActive = True
+    call screen vueTerritoire
+label startRegionBleue:
+    $ regionBleueActive = True
+    call screen vueTerritoire
+label startRegionGrise:
+    $ regionGriseActive = True
+    call screen vueTerritoire
+label startRegionJaune:
+    $ regionJauneActive = True
+    call screen vueTerritoire
+label startRegionRose:
+    $ regionRoseActive = True
+    call screen vueTerritoire
+label startRegionRouge:
+    $ regionRougeActive = True
+    call screen vueTerritoire
+label startRegionVerte:
+    $ regionVerteActive = True
+    call screen vueTerritoire
+label startRegionViolette:
+    $ regionVioletteActive = True
+    call screen vueTerritoire
+
 
 screen vueTerritoire:
-
     #$ popUpInfoRegionOn=False
     if regionBeigeActive==True:
         imagebutton:

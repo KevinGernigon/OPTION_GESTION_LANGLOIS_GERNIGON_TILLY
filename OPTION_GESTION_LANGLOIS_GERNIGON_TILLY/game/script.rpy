@@ -24,6 +24,7 @@ define h = Character(_('Ministre de l"agriculture'), color="#c8ffc8")
 define c = Character(_('Ministre des civils'), color="#c8ffc8")
 define r = Character(_('Ministre des religions'), color="#c8ffc8")
 define a = Character(_('Ambassadeur'), color="#c8ffc8")
+define g = Character(_('Maitre du jeu'), color="#c8ffc8", kind = nvl)
 
 default popUpInfoRegionOn=False
 
@@ -952,7 +953,64 @@ screen infoRegionViolette :
 
 # Le jeu commence ici
 
+#default regionBeigeActive = True
+#default regionBleueActive = False
+#default regionGriseActive = False
+#default regionJauneActive = False
+#default regionOrangeActive = False
+#default regionRoseActive = False
+#default regionRougeActive = False
+#default regionVerteActive = False
+#default regionVioletteActive = False
 
+label victoire:
+    default nombreTerritoire = 0
+    if regionBeigeActive == True:
+        $ nombreTerritoire += 1
+
+    if regionBleueActive == True:
+        $ nombreTerritoire += 1
+
+    if regionGriseActive == True:
+        $ nombreTerritoire += 1
+
+    if regionJauneActive == True:
+        $ nombreTerritoire += 1
+
+    if regionOrangeActive == True:
+        $ nombreTerritoire += 1
+
+    if regionRoseActive == True:
+        $ nombreTerritoire += 1
+
+    if regionRougeActive == True:
+        $ nombreTerritoire += 1
+
+    if regionVerteActive == True:
+        $ nombreTerritoire += 1
+
+    if regionVioletteActive == True:
+        $ nombreTerritoire += 1
+
+    if nombreTerritoire < 5:
+        g "Vous avez échoué vous n'avez pas réussi à conquérir assez de territoires ..."
+        g "Retentez votre chance!"
+    elif nombreTerritoire == 5:
+        g "Félicitations vous avez gagné !"
+        g "Vous avez obtenu le rang D"
+    elif nombreTerritoire == 6:
+        g "Félicitations vous avez gagné !"
+        g "Vous avez obtenu le rang C"
+    elif nombreTerritoire == 7:
+        g "Félicitations vous avez gagné !"
+        g "Vous avez obtenu le rang B"
+    elif nombreTerritoire == 8:
+        g "Félicitations vous avez gagné !"
+        g "Vous avez obtenu le rang A"
+    elif nombreTerritoire == 9:
+        g "Félicitations vous avez gagné !"
+        g "Vous avez obtenu le rang S"
+        g "Le rang S est le rang maximum vous êtes un stratège hors pair"
 
 screen vueTerritoire:
     #$ popUpInfoRegionOn=False

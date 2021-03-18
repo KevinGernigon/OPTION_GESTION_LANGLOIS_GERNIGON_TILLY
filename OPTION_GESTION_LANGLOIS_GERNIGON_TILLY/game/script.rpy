@@ -24,6 +24,7 @@ image boxInteragir3 = "desk.png"
 image boxInteragir4 = "coins.png"
 image boxInteragir5 = "talk.png"
 image logoAttaque = im.Scale("logoAttaque.png", 50, 50)
+image btnFindeTour = "btnFinDeTour.png"
 
 
 
@@ -108,13 +109,16 @@ default regionRougeActionFaite = False
 default regionVerteActionFaite = False
 default regionVioletteActionFaite = False
 
+default jour = 0
+
 
 label start:
     $ config.has_autosave = False
     $ jour = 1
-    "test"
+
     scene mapRegionGrise
     call screen vueTerritoire
+    
 
 
 transform icons :
@@ -128,6 +132,10 @@ label interactionBeige :
     show pythie at left
     show screen statsInteractionBeige
     call screen interactionBeige
+
+
+
+
 screen statsInteractionBeige:
     image "../images/blackbox.png"
     text "Région Beige" :
@@ -1330,6 +1338,12 @@ screen vueTerritoire:
     text "%d" % argentGeneral :
         yalign 0.21
         xalign 0.97
+
+    imagebutton :
+        idle "btnFindeTour"
+        xpos 800
+        ypos 500
+        action  Jump("victoire")
 
 
 

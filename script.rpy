@@ -16,6 +16,42 @@ image boxInteragir3 = "desk.png"
 image boxInteragir4 = "coins.png"
 image boxInteragir5 = "talk.png"
 
+#image des armées différentes
+image armyGeneral = "army.png"
+image armyBeige = "armeeBeige.png"
+image armyRouge = "armeeRouge.png"
+image armyViolette = "armeeViolette.png"
+image armyVerte = "armeeVerte.png"
+image armyGrise = "armeeGrise.png"
+image armyRose = "armeeRose.png"
+image armyJaune = "armeeJaune.png"
+image armyOrange = "armeeOrange.png"
+image armyBleue = "armeeBleue.png"
+
+#images des finances différentes
+image financesGeneral = "coins.png"
+image financesBeige = "coinsBeige.png"
+image financesRouge = "coinsRouge.png"
+image financesViolette = "coinsViolette.png"
+image financesVerte = "coinsVerte.png"
+image financesGrise = "coinsGrise.png"
+image financesRose = "coinsRose.png"
+image financesJaune = "coinsJaune.png"
+image financesOrange = "coinsOrange.png"
+image financesBleue = "coinsBleue.png"
+
+#images des populations différentes
+image popGeneral = "desk.png"
+image popBeige = "populationBeige.png"
+image popRouge = "populationRouge.png"
+image popViolette = "populationViolette.png"
+image popVerte = "populationVerte.png"
+image popGrise = "populationGrise.png"
+image popRose = "populationRose.png"
+image popJaune = "populationJaune.png"
+image popOrange = "populationOrange.png"
+image popBleue = "populationBleue.png"
+
 transform icons :
     zoom 1
 
@@ -107,6 +143,9 @@ label start:
     scene mapRegionGrise
     call screen vueTerritoire
 
+#dezoom icons generales
+transform dezoom_icons_generales:
+    zoom 0.2
 
 label interactionBeige :
     hide screen infoRegionBeige
@@ -1082,27 +1121,31 @@ screen vueTerritoire:
             action Show("infoRegionViolette")
 
     #text pop_up en haut à droite
-    text "Armée Générale :" :
+    image "../images/army.png" :
         yalign 0.02
-        xalign 0.9
+        xalign 0.94
+        at dezoom_icons_generales
     text "%d" % armeeGeneral :
-        yalign 0.02
+        yalign 0.03
         xalign 0.97
-    text "Nourriture Générale :" :
-        yalign 0.06
-        xalign 0.9
+    image "../images/leaf.png" :
+        yalign 0.08
+        xalign 0.94
+        at dezoom_icons_generales
     text "%d" % nourritureGeneral:
-        yalign 0.06
+        yalign 0.091
         xalign 0.97
-    text "Population Générale :" :
-        yalign 0.1
-        xalign 0.9
+    image "../images/desk.png" :
+        yalign 0.14
+        xalign 0.94
+        at dezoom_icons_generales
     text "%d" % populationGeneral :
-        yalign 0.1
+        yalign 0.15
         xalign 0.97
-    text "Finances Générales :" :
-        yalign 0.14
-        xalign 0.9
+    image "../images/coins.png" :
+        yalign 0.20
+        xalign 0.94
+        at dezoom_icons_generales
     text "%d" % argentGeneral :
-        yalign 0.14
+        yalign 0.21
         xalign 0.97

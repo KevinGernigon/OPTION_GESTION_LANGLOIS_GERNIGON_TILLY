@@ -109,16 +109,26 @@ default regionRougeActionFaite = False
 default regionVerteActionFaite = False
 default regionVioletteActionFaite = False
 
+default niveauRegionBeige = 1
+default niveauRegionBleue = 1
+default niveauRegionGrise = 1
+default niveauRegionJaune = 1
+default niveauRegionOrange = 1
+default niveauRegionRose = 1
+default niveauRegionRouge = 1
+default niveauRegionVerte = 1
+default niveauRegionViolette = 1
+
 default jour = 0
 
 
 label start:
     $ config.has_autosave = False
-    $ jour = 1
+    $ jour += 1
 
     scene mapRegionGrise
     call screen vueTerritoire
-    
+
 
 
 transform icons :
@@ -1341,8 +1351,8 @@ screen vueTerritoire:
 
     imagebutton :
         idle "btnFindeTour"
-        xpos 800
-        ypos 500
+        xpos 1021
+        ypos 635
         action  Jump("victoire")
 
 
@@ -1352,50 +1362,121 @@ screen vueTerritoire:
 
 
 label victoire:
-    default nombreTerritoire = 0
-    if regionBeigeActive == True:
-        $ nombreTerritoire += 1
+    if jour == 30:
+        default nombreTerritoire = 0
+        if regionBeigeActive == True:
+            $ nombreTerritoire += 1
 
-    if regionBleueActive == True:
-        $ nombreTerritoire += 1
+        if regionBleueActive == True:
+            $ nombreTerritoire += 1
 
-    if regionGriseActive == True:
-        $ nombreTerritoire += 1
+        if regionGriseActive == True:
+            $ nombreTerritoire += 1
 
-    if regionJauneActive == True:
-        $ nombreTerritoire += 1
+        if regionJauneActive == True:
+            $ nombreTerritoire += 1
 
-    if regionOrangeActive == True:
-        $ nombreTerritoire += 1
+        if regionOrangeActive == True:
+            $ nombreTerritoire += 1
 
-    if regionRoseActive == True:
-        $ nombreTerritoire += 1
+        if regionRoseActive == True:
+            $ nombreTerritoire += 1
 
-    if regionRougeActive == True:
-        $ nombreTerritoire += 1
+        if regionRougeActive == True:
+            $ nombreTerritoire += 1
 
-    if regionVerteActive == True:
-        $ nombreTerritoire += 1
+        if regionVerteActive == True:
+            $ nombreTerritoire += 1
 
-    if regionVioletteActive == True:
-        $ nombreTerritoire += 1
+        if regionVioletteActive == True:
+            $ nombreTerritoire += 1
 
-    if nombreTerritoire < 5:
-        g "Vous avez échoué vous n'avez pas réussi à conquérir assez de territoires ..."
-        g "Retentez votre chance!"
-    elif nombreTerritoire == 5:
-        g "Félicitations vous avez gagné !"
-        g "Vous avez obtenu le rang D"
-    elif nombreTerritoire == 6:
-        g "Félicitations vous avez gagné !"
-        g "Vous avez obtenu le rang C"
-    elif nombreTerritoire == 7:
-        g "Félicitations vous avez gagné !"
-        g "Vous avez obtenu le rang B"
-    elif nombreTerritoire == 8:
-        g "Félicitations vous avez gagné !"
-        g "Vous avez obtenu le rang A"
-    elif nombreTerritoire == 9:
-        g "Félicitations vous avez gagné !"
-        g "Vous avez obtenu le rang S"
-        g "Le rang S est le rang maximum vous êtes un stratège hors pair"
+        if nombreTerritoire < 5:
+            g "Vous avez échoué vous n'avez pas réussi à conquérir assez de territoires ..."
+            g "Retentez votre chance!"
+        elif nombreTerritoire == 5:
+            g "Félicitations vous avez gagné !"
+            g "Vous avez obtenu le rang D"
+        elif nombreTerritoire == 6:
+            g "Félicitations vous avez gagné !"
+            g "Vous avez obtenu le rang C"
+        elif nombreTerritoire == 7:
+            g "Félicitations vous avez gagné !"
+            g "Vous avez obtenu le rang B"
+        elif nombreTerritoire == 8:
+            g "Félicitations vous avez gagné !"
+            g "Vous avez obtenu le rang A"
+        elif nombreTerritoire == 9:
+            g "Félicitations vous avez gagné !"
+            g "Vous avez obtenu le rang S"
+            g "Le rang S est le rang maximum vous êtes un stratège hors pair"
+    else:
+        $ regionBeigeActionFaite = False
+        $ regionBleueActionFaite = False
+        $ regionGriseActionFaite = False
+        $ regionJauneActionFaite = False
+        $ regionOrangeActionFaite = False
+        $ regionRoseActionFaite = False
+        $ regionRougeActionFaite = False
+        $ regionVerteActionFaite = False
+        $ regionVioletteActionFaite = False
+        jump gestionRevenu
+
+label gestionRevenu:
+    default multiplier = 0.1
+
+    if niveauRegionBeige == 1:
+        $ armeeRegionBeige = 100
+        $ argentRegionBeige = 90
+        $ populationRegionBeige = 150
+        $ nourritureRegionBeige = 60
+        
+    $ niveauRegionBleue = 1
+    $ niveauRegionGrise = 1
+    $ niveauRegionJaune = 1
+    $ niveauRegionOrange = 1
+    $ niveauRegionRose = 1
+    $ niveauRegionRouge = 1
+    $ niveauRegionVerte = 1
+    $ niveauRegionViolette = 1
+
+
+    $ armeeRegionBleue = 150
+    $ argentRegionBleue = 90
+    $ populationRegionBleue = 85
+    $ nourritureRegionBleue = 75
+
+    $ armeeRegionGrise = 100
+    $ argentRegionGrise = 100
+    $ populationRegionGrise = 60
+    $ nourritureRegionGrise = 140
+
+    $ armeeRegionJaune = 120
+    $ argentRegionJaune = 90
+    $ populationRegionJaune = 110
+    $ nourritureRegionJaune = 80
+
+    $ armeeRegionOrange = 100
+    $ argentRegionOrange = 110
+    $ populationRegionOrange = 70
+    $ nourritureRegionOrange = 120
+
+    $ armeeRegionRose = 120
+    $ argentRegionRose = 90
+    $ populationRegionRose = 120
+    $ nourritureRegionRose = 70
+
+    $ armeeRegionRouge = 80
+    $ argentRegionRouge = 90
+    $ populationRegionRouge = 130
+    $ nourritureRegionRouge = 100
+
+    $ armeeRegionVerte = 80
+    $ argentRegionVerte = 90
+    $ populationRegionVerte = 140
+    $ nourritureRegionVerte = 90
+
+    $ armeeRegionViolette = 60
+    $ argentRegionViolette = 100
+    $ populationRegionViolette = 100
+    $ nourritureRegionViolette = 140

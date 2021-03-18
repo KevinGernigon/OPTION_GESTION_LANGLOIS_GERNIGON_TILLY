@@ -1,16 +1,16 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'../images/attaquer.png'>:
-  File "game/script.rpy", line 107, in script
+While loading <'Image' u'../images/army.png'>:
+  File "game/script.rpy", line 117, in script
     call screen vueTerritoire
   File "renpy/common/000statements.rpy", line 560, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-IOError: Couldn't find file '../images/attaquer.png'.
+IOError: Couldn't find file '../images/army.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 107, in script
+  File "game/script.rpy", line 117, in script
     call screen vueTerritoire
   File "renpy/ast.py", line 1969, in execute
     self.call("execute")
@@ -36,10 +36,6 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/transition.py", line 360, in render
-    return render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
   File "renpy/display/layout.py", line 751, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
@@ -56,11 +52,13 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/behavior.py", line 781, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "renpy/display/layout.py", line 1156, in render
-    st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
+  File "renpy/display/transform.py", line 927, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 927, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 116, in renpy.display.accelerator.transform_render
   File "render.pyx", line 263, in renpy.display.render.render
   File "renpy/display/im.py", line 607, in render
     return cache.get(self, render=True)
@@ -70,9 +68,9 @@ Full traceback:
     filelike = renpy.loader.load(self.filename)
   File "renpy/loader.py", line 798, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file '../images/attaquer.png'.
+IOError: Couldn't find file '../images/army.png'.
 
 Windows-10-10.0.18362
 Ren'Py 7.4.2.1292
 SpeProg 1.0
-Thu Mar 18 08:35:53 2021
+Thu Mar 18 10:47:02 2021

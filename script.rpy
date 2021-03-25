@@ -27,6 +27,8 @@ image upgradeRegionButton = "talk.png"
 image logoAttaque = im.Scale("logoAttaque.png", 50, 50)
 image btnFindeTour = "btnFinDeTour.png"
 image btnFindeTour_action = Image("fin_de_tour_action.png", xpos = 450, ypos = 550)
+image accepter = "accept.png"
+image refuser = "refus.png"
 
 
 define p = Character(_('Pythie'), color="#c8ffc8")

@@ -793,18 +793,27 @@ screen attaqueBeige:
 
 #negociation guerre de beige vers grise
 screen negociationBeigeGrise:
-    imagebutton:
-        idle "armyGeneral"
-        xalign 0.695
-        yalign 0.7
+    imagebutton :
+        idle "accepter"
+        xpos 280
+        yalign 0.5
         at choix_icons
-        action Jump("refusNegociationBeigeGrise")
-    imagebutton:
-        idle "financesGeneral"
-        xalign 0.2
-        yalign 0.7
+        action  Jump("acceptationNegociationBeigeGrise")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
         at choix_icons
-        action Jump("acceptationNegociationBeigeGrise")
+        action  Jump("refusNegociationBeigeGrise")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
 
 label refusNegociationBeigeGrise:
     if armeeRegionBeige>=armeeRegionGrise :
@@ -863,18 +872,27 @@ label beigeAttaqueGrise:
 
 #negociation guerre de beige vers jaune
 screen negociationBeigeJaune:
-    imagebutton:
-        idle "armyGeneral"
-        xalign 0.695
-        yalign 0.7
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
         at choix_icons
-        action Jump("refusNegociationBeigeJaune")
-    imagebutton:
-        idle "financesGeneral"
-        xalign 0.2
-        yalign 0.7
+        action  Jump("acceptationNegociationBeigeJaune")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
         at choix_icons
-        action Jump("acceptationNegociationBeigeJaune")
+        action  Jump("refusNegociationBeigeJaune")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
 
 label refusNegociationBeigeJaune:
     if armeeRegionBeige>=armeeRegionJaune :

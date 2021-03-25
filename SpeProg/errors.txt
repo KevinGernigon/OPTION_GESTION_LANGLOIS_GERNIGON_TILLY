@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 285: expected statement.
-    e
-     ^
+File "game/regionBeige.rpy", line 395: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Mar 18 00:20:05 2021
+Thu Mar 18 18:58:57 2021

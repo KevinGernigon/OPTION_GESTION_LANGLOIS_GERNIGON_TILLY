@@ -25,7 +25,16 @@ image boxInteragir4 = "coins.png"
 image boxInteragir5 = "talk.png"
 image upgradeRegionButton = "talk.png"
 image logoAttaque = im.Scale("logoAttaque.png", 50, 50)
+image imageMoins = im.Scale("moinsImage.png", 100, 100)
+image imagePlus = im.Scale("plusImage.png", 200, 200)
+image imagePlusTen = im.Scale("plusTen.png", 100, 100)
+image checkbox = im.Scale("checkbox.png", 100, 100)
+image modifyJauge = im.Scale("modifyVariableJauge.png", 200, 200)
 image btnFindeTour = "btnFinDeTour.png"
+image upgrade1 = im.Scale("upgrade1.png", 200, 200)
+image upgrade2 = im.Scale("upgrade2.png", 200, 200)
+image accepter = im.Scale("accept.png", 200, 200)
+image refus = im.Scale("refuse.png", 200, 200)
 
 
 define p = Character(_('Pythie'), color="#c8ffc8")
@@ -85,10 +94,11 @@ image foodJaune = "nourritureJaune.png"
 image foodOrange = "nourritureOrange.png"
 image foodBleue = "nourritureBleue.png"
 
-
+default lastScreen=""
 
 default popUpInfoRegionOn=False
 
+default regionsActives = 0
 
 default armeeGeneral = 0
 default argentGeneral = 0
@@ -180,6 +190,18 @@ default multiplierRouge = 0.1
 default multiplierVerte = 0.1
 default multiplierViolette = 0.1
 
+default chanceAttaqueBeige = 0
+default chanceAttaqueBleue = 0
+default chanceAttaqueGrise = 0
+default chanceAttaqueJaune = 0
+default chanceAttaqueOrange = 0
+default chanceAttaqueRose = 0
+default chanceAttaqueRouge = 0
+default chanceAttaqueVerte = 0
+default chanceAttaqueViolette = 0
+
+default variableJauge=0
+default variableJaugeDiv2= 0
 
 default jour = 1
 
@@ -188,6 +210,7 @@ label start:
     $ config.has_autosave = False
 
     "Dans quelle région voulez vous commencer?"
+    nvl clear
     scene mapRegionGrise
     call screen choixRegionDepart
 
@@ -851,9 +874,57 @@ screen choixRegionDepart:
             action Jump("startRegionViolette")
   
 
+transform variableJaugeText:
+    zoom 4
 
 
+label variableJauge:
+    $ variableJauge = 0
+    call screen variableJauge
+
+screen variableJauge:
+    text "%d" % variableJauge:
+        at variableJaugeText
+        yalign 0.5
+        xalign 0.5
+    imagebutton :
+        idle "imageMoins"
+        yalign 0.5
+        xalign 0.35
+        action  Jump("variableJaugeMoins")
+    imagebutton :
+        idle "imagePlus"
+        yalign 0.5
+        xalign 0.65
+        action  Jump("variableJaugePlus")
+    imagebutton :
+        idle "checkbox"
+        yalign 0.75
+        xalign 0.5
+        action  Jump(lastScreen)  
+    imagebutton :
+        idle "imagePlusTen"
+        yalign 0.5
+        xalign 0.80
+        action  Jump("variableJaugePlusTen")  
 
 
+label variableJaugePlus:
+    
+    $ variableJauge+=1
+    $ variableJaugeDiv2+=0.5
+    call screen variableJauge 
 
+label variableJaugePlusTen:
+    $ variableJauge+=10
+    $ variableJaugeDiv2 +=5
+    call screen variableJauge 
 
+label variableJaugeMoins:
+    $ variableJauge-=1
+    if variableJauge < 0 :
+        $ variableJauge = 0
+    $ variableJaugeDiv2-=0.5
+    if variableJaugeDiv2 < 0 :
+        $ variableJaugeDiv2 = 0
+    call screen variableJauge 

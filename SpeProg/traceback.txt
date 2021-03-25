@@ -1,26 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/finDuTour.rpy", line 78, in script
-    $ armeeRegionBeige += armeeRegionBeige * multiplierBeige
-  File "game/finDuTour.rpy", line 78, in <module>
-    $ armeeRegionBeige += armeeRegionBeige * multiplierBeige
-NameError: name 'multiplierBeige' is not defined
+  File "game/regionBeige.rpy", line 873, in script
+    if argentRegionBeige > : #50 and populationRegionBeige > 50 and nourritureRegionBeige > 25 :
+SyntaxError: unexpected EOF while parsing (regionBeige.rpy, line 873)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/finDuTour.rpy", line 78, in script
-    $ armeeRegionBeige += armeeRegionBeige * multiplierBeige
-  File "renpy/ast.py", line 922, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2218, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/finDuTour.rpy", line 78, in <module>
-    $ armeeRegionBeige += armeeRegionBeige * multiplierBeige
-NameError: name 'multiplierBeige' is not defined
+  File "game/regionBeige.rpy", line 873, in script
+    if argentRegionBeige > : #50 and populationRegionBeige > 50 and nourritureRegionBeige > 25 :
+  File "renpy/ast.py", line 1852, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2247, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: unexpected EOF while parsing (regionBeige.rpy, line 873)
 
-Windows-10-10.0.18362
-Ren'Py 7.4.2.1292
+Windows-10-10.0.17134
+Ren'Py 7.4.3.1414
 SpeProg 1.0
-Thu Mar 18 19:03:15 2021
+Thu Mar 25 11:40:24 2021

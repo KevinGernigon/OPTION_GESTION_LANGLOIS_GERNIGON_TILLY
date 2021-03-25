@@ -2,7 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/regionBeige.rpy", line 395: indentation mismatch.
+File "game/regionBeige.rpy", line 864: invalid syntax
+    regionBeigeActive = False:
+                              ^
+    
 
-Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Mar 18 18:58:57 2021
+Ren'Py Version: Ren'Py 7.4.3.1414
+Thu Mar 25 12:35:21 2021

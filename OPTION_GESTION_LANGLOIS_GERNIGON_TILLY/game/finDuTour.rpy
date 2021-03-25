@@ -577,8 +577,5 @@ label gestionRevenu:
         $ regionsActives +=1
 
 
-    $ armeeGeneral += 15* regionsActives
-    $ argentGeneral += 20* regionsActives
-    $ populationGeneral += 15* regionsActives
-    $ regionsActives=0
+
     call screen vueTerritoire

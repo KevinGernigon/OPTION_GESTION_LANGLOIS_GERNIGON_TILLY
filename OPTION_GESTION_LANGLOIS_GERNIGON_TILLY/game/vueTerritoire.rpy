@@ -91,37 +91,40 @@ screen vueTerritoire:
     #text pop_up en haut à droite
     image "../images/army.png" :
         yalign 0.02
-        xalign 0.94
+        xalign 0.92
         at dezoom_icons_generales
     text "%d" % armeeGeneral :
         yalign 0.03
         xalign 0.97
     image "../images/leaf.png" :
         yalign 0.08
-        xalign 0.94
+        xalign 0.92
         at dezoom_icons_generales
     text "%d" % nourritureGeneral:
         yalign 0.091
         xalign 0.97
     image "../images/desk.png" :
         yalign 0.14
-        xalign 0.94
+        xalign 0.92
         at dezoom_icons_generales
     text "%d" % populationGeneral :
         yalign 0.15
         xalign 0.97
     image "../images/coins.png" :
         yalign 0.20
-        xalign 0.94
+        xalign 0.92
         at dezoom_icons_generales
     text "%d" % argentGeneral :
         yalign 0.21
         xalign 0.97
+    text "Jour : ":
+        xpos 10
+        ypos 20
     text "%d" % jour :
-        xpos 20
+        xpos 80
         ypos 20
     imagebutton :
         idle "btnFindeTour"
         xpos 450
         ypos 600
-        action  Jump("iadeplacements")
+        action  Jump("actionsIA")

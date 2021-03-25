@@ -266,6 +266,7 @@ label victoire:
 
         return
 
+
     else:
         $ regionBeigeActionFaite = False
         $ regionBleueActionFaite = False
@@ -276,6 +277,44 @@ label victoire:
         $ regionRougeActionFaite = False
         $ regionVerteActionFaite = False
         $ regionVioletteActionFaite = False
+
+        if  regionBeigeActive == True and nourritureRegionBeige == 0:
+            $ armeeRegionBeige -= 30
+            $ populationRegionBeige -= 30
+            p"La région Beige n'a plus de nourriture la population meurt de faim"
+        if  regionRougeActive == True and nourritureRegionRouge == 0:
+            $ armeeRegionRouge -= 30
+            $ populationRegionRouge -= 30
+            p"La région Rouge n'a plus de nourriture la population meurt de faim"
+        if  regionVioletteActive == True and nourritureRegionViolette == 0:
+            $ armeeRegionViolette -= 30
+            $ populationRegionViolette -= 30
+            p"La région Violette n'a plus de nourriture la population meurt de faim"
+        if  regionVerteActive == True and nourritureRegionVerte == 0:
+            $ armeeRegionVerte -= 30
+            $ populationRegionVerte -= 30
+            p"La région Verte n'a plus de nourriture la population meurt de faim"
+        if  regionGriseActive == True and nourritureRegionGrise == 0:
+            $ armeeRegionGrise -= 30
+            $ populationRegionGrise -= 30
+            p"La région Cyan n'a plus de nourriture la population meurt de faim"
+        if  regionRoseActive == True and nourritureRegionRose == 0:
+            $ armeeRegionRose -= 30
+            $ populationRegionRose -= 30
+            p"La région Rose n'a plus de nourriture la population meurt de faim"
+        if  regionJauneActive == True and nourritureRegionJaune == 0:
+            $ armeeRegionJaune -= 30
+            $ populationRegionJaune -= 30
+            p"La région Jaune n'a plus de nourriture la population meurt de faim"
+        if  regionOrangeActive == True and nourritureRegionOrange == 0:
+            $ armeeRegionOrange -= 30
+            $ populationRegionOrange -= 30
+            p"La région Orange n'a plus de nourriture la population meurt de faim"
+        if  regionBleueActive == True and nourritureRegionBleue == 0:
+            $ armeeRegionBleue -= 30
+            $ populationRegionBleue -= 30
+            p"La région Bleue n'a plus de nourriture la population meurt de faim"
+
         jump gestionRevenu
 
 label gestionRevenu:

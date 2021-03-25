@@ -259,6 +259,13 @@ label victoire:
             g "Félicitations vous avez gagné !"
             g "Vous avez obtenu le rang S"
             g "Le rang S est le rang maximum vous êtes un stratège hors pair"
+        return
+    elif regionBeigeActive == False and regionBleueActive == False and regionGriseActive == False and regionJauneActive == False and regionOrangeActive == False and regionRoseActive == False and regionRougeActive == False and regionVerteActive == False and regionVioletteActive == False:
+        g "Vous avez perdu le contrôle de toutes vos régions"
+        g "GAME OVER "
+
+        return
+
     else:
         $ regionBeigeActionFaite = False
         $ regionBleueActionFaite = False
@@ -438,4 +445,4 @@ label gestionRevenu:
     $ armeeRegionViolette += armeeRegionViolette * multiplierViolette
 
 
-    call screen vueTerritoire
+    call screen vueTerritoire with fade

@@ -2,21 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/interaction.rpy", line 100: expected statement.
-    "Augmenter la taille de l'armée de cette région(+30 armee / -30 population)":
-                                                                                ^
-
-File "game/interaction.rpy", line 105: expected statement.
-    "Augmenter la nourriture de cette région(+30 nourriture / -15 argent -15 population)":
-                                                                                         ^
-
-File "game/interaction.rpy", line 111: expected statement.
-    "Augmenter l'argent de cette région(+30 argent / -30 nourriture)":
-                                                                     ^
-
-File "game/interaction.rpy", line 116: expected statement.
-    "Augmenter la taille de la population de cette région(+30 population / -30 armee)":
-                                                                                      ^
+File "game/regionBeige.rpy", line 395: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Thu Mar 18 08:31:47 2021
+Thu Mar 18 18:58:57 2021

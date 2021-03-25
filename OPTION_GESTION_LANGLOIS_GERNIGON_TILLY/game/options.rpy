@@ -1,4 +1,4 @@
-## Ce fichier contient les options qui peuvent être modifiées pour personnaliser
+﻿## Ce fichier contient les options qui peuvent être modifiées pour personnaliser
 ## votre jeu.
 ##
 ## Les lignes qui commencent avec deux dièses '#' sont des commentaires et vous
@@ -102,13 +102,13 @@ define config.end_game_transition = None
 
 ## Gestion des fenêtres ########################################################
 ##
-## Cela contrôle l’affichage de la fenêtre de dialogue. Si « show », elle est
-## toujours affichée. Si « hide », elle ne s’affiche que lorsque du dialogue est
-## présent. Si « auto », La fenêtre est cachée avant chaque changement de scène
+## Cela contrôle l’affichage de la fenêtre de dialogue. Si « show », elle est
+## toujours affichée. Si « hide », elle ne s’affiche que lorsque du dialogue est
+## présent. Si « auto », La fenêtre est cachée avant chaque changement de scène
 ## et réapparait une fois le dialogue affiché.
 ##
 ## Après le début de la partie, cela peut-être changé avec les instructions
-## « window show », « window hide » et « window auto ».
+## « window show », « window hide » et « window auto ».
 
 define config.window = "auto"
 
@@ -187,7 +187,7 @@ init python:
     ## correspond à tous les fichiers psd quelque soit leur emplacement dans
     ## l’arborescence du fichier.
 
-    ## Choisissez la valeur « None » pour les exclure de la distribution.
+    ## Choisissez la valeur « None » pour les exclure de la distribution.
 
     build.classify('**~', None)
     build.classify('**.bak', None)
@@ -195,7 +195,7 @@ init python:
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
 
-    ## Pour archiver les fichiers, choisissez la valeur « archive ».
+    ## Pour archiver les fichiers, choisissez la valeur « archive ».
 
     # build.classify('game/**.png', 'archive')
     # build.classify('game/**.jpg', 'archive')
@@ -210,7 +210,7 @@ init python:
 
 ## Une clé de licence A Google Play est requise pour télécharger les fichiers et
 ## permettre les achats dans l'application. Vous pourrez la trouver sur la page
-## « Services & APIs » de la console de développement Google Play.
+## « Services & APIs » de la console de développement Google Play.
 
 # define build.google_play_key = "..."
 

@@ -112,53 +112,62 @@ screen statsInteractionBeige:
     text "%d" % nourritureRegionBeige:
         xpos 1150
         ypos 20
+
 screen interactionBeige:
     imagebutton :
         idle "boxInteragir1"
-        xpos 300
+        xalign 0.2
         ypos 100
         action  Jump("ministreArmeeBeige")
     text "Armée":
-        xpos 300
+        xalign 0.18
         ypos 200
         outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir2"
-        xpos 680
+        xalign 0.8
         ypos 100
         action  Jump("ministreAgricultureBeige")
     text "Nourriture":
-        xpos 820
+        xalign 0.87
         ypos 200
         outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir3"
-        xpos 300
+        xalign 0.22
         ypos 400
         action  Jump("ministreCivilsBeige")
     text "Civils":
-        xpos 300
+        xalign 0.18
         ypos 500
         outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir4"
-        xpos 680
+        xalign 0.8
         ypos 400
         action  Jump("ministreFinancesBeige")
     text "Finances":
-        xpos 820
+        xalign 0.87
         ypos 500
         outlines [ (3, "#000", 0, 0) ]
     imagebutton :
         idle "boxInteragir5"
-        xpos 490
-        ypos 250
+        xalign 0.5
+        ypos 400
         action  Jump("ministreAmbassadeurBeige")
     text "Ambassade":
-        xalign 0.43
-        yalign 0.58
+        xalign 0.47
+        ypos 580
         outlines [ (3, "#000", 0, 0) ]
-
+    imagebutton :
+        idle "upgrade1"
+        xalign 0.5
+        ypos 100
+        action  Jump("upgradeRegionBeige")
+    text "Améliorer":
+        xalign 0.47
+        ypos 200
+        outlines [ (3, "#000", 0, 0) ]
 
 
 
@@ -169,7 +178,7 @@ screen interactionBeige:
 
 #armees
 label ministreArmeeBeige:
-    p "Assistante convoquer moi le ministre des armées svp"
+    p "Assistante convoquez moi le ministre des armées svp"
     show armees at right
     a "Vous m'avez demandé commandant ?"
     p "Oui je voulais vous demander..."
@@ -180,17 +189,24 @@ label ministreArmeeBeige2 :
 # dezoom pour les icons de choix
 transform choix_icons :
     zoom 0.5
+transform variableJaugeText :
+    zoom 2
+
 
 screen ministreArmeeBeige2:
-
 #choix gauche
+    imagebutton :
+        idle "modifyJauge"
+        xalign 0.5
+        yalign 0.25
+        action  [SetVariable("lastScreen", "ministreArmeeBeige2"), Jump("variableJauge")]
     imagebutton :
         idle "armyGeneral"
         xpos 280
         yalign 0.5
         at choix_icons
         action  Jump("requisitionTroupesArmeeBeige")
-    text "+30" :
+    text " +%d" % variableJauge:  
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -200,7 +216,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionTroupesArmeeBeige")
-    text "-30" :
+    text " -%d" % variableJauge:   
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -215,7 +231,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donTroupesArmeeBeige")
-    text "+30" :
+    text " +%d" % variableJauge:  
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -225,7 +241,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donTroupesArmeeBeige")
-    text "-30" :
+    text " -%d" % variableJauge:  
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -236,22 +252,22 @@ screen ministreArmeeBeige2:
 
 label requisitionTroupesArmeeBeige:
             p "Je souhaite requisitionner des soldats pour augmenter la taille de mes armées"
-            if armeeRegionBeige < 31 :
+            if armeeRegionBeige < variableJauge :
                 a "Nous n'avons pas assez de soldats à vous léguer mon commandant."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ armeeGeneral += 30
-                $ armeeRegionBeige -=  30
+                $ armeeGeneral += variableJauge
+                $ armeeRegionBeige -=  variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
 
 label donTroupesArmeeBeige:
-            if armeeGeneral < 31 :
+            if armeeGeneral < variableJauge :
                 p "Vous ne pouvez pas faire ça, vous ne possédez pas assez de soldats"
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -259,8 +275,8 @@ label donTroupesArmeeBeige:
             else :
                 p "Je souhaite renforcer la zone je vous ais donc envoyé des soldats"
                 a "Merci commandant"
-                $ armeeRegionBeige += 30
-                $ armeeGeneral -= 30
+                $ armeeRegionBeige += variableJauge
+                $ armeeGeneral -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -289,12 +305,17 @@ label ministreAgricultureBeige2 :
 screen ministreAgricultureBeige2:
 #choix gauche
     imagebutton :
+        idle "modifyJauge"
+        xalign 0.5
+        yalign 0.25
+        action  [SetVariable("lastScreen", "ministreAgricultureBeige2"), Jump("variableJauge")]
+    imagebutton :
         idle "foodGeneral"
         xpos 280
         yalign 0.5
         at choix_icons
         action  Jump("requisitionNourritureAgricultureBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -304,7 +325,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionNourritureAgricultureBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -319,7 +340,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donNourritureAgricultureBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -329,7 +350,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donNourritureAgricultureBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xpos 870
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -342,22 +363,22 @@ screen ministreAgricultureBeige2:
 
 label requisitionNourritureAgricultureBeige:
             p "Je souhaite requisitionner de la nourriture"
-            if nourritureRegionBeige < 31 :
+            if nourritureRegionBeige < variableJauge :
                 a "Nous ne pouvons pas vous donner de nourriture, nous subvenons tout juste à nos besoins."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ nourritureGeneral += 30
-                $ nourritureRegionBeige -= 30
+                $ nourritureGeneral += variableJauge
+                $ nourritureRegionBeige -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
 
 label donNourritureAgricultureBeige:
-            if nourritureGeneral < 31 :
+            if nourritureGeneral < variableJauge :
                 p "Je ne peux pas vous donner de nourriture, je n'en possède pas assez."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -365,8 +386,8 @@ label donNourritureAgricultureBeige:
             else :
                 p "Je vous envoie de la nourriture"
                 a "Merci commandant"
-                $ nourritureGeneral -= 30
-                $ nourritureRegionBeige += 30
+                $ nourritureGeneral -= variableJauge
+                $ nourritureRegionBeige += variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -387,12 +408,17 @@ label ministreCivilsBeige2 :
 
 screen ministreCivilsBeige2:
     imagebutton :
+        idle "modifyJauge"
+        xalign 0.5
+        yalign 0.25
+        action  [SetVariable("lastScreen", "ministreCivilsBeige2"), Jump("variableJauge")]
+    imagebutton :
         idle "popGeneral"
         xpos 280
         yalign 0.5
         at choix_icons
         action  Jump("requisitionCivilsBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -402,7 +428,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionCivilsBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -417,7 +443,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donCivilsBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -427,7 +453,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donCivilsBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -438,22 +464,22 @@ screen ministreCivilsBeige2:
 
 label requisitionCivilsBeige:
             p "Je souhaite requisitionner des civils"
-            if populationRegionBeige < 31 :
+            if populationRegionBeige < variableJauge :
                 a "Veuillez m'excuser mon commandant, nous n'avons pas assez de civils à vous confier."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ populationGeneral += 30
-                $ populationRegionBeige -= 30
+                $ populationGeneral += variableJauge
+                $ populationRegionBeige -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
 
 label donCivilsBeige:
-            if populationGeneral < 31 :
+            if populationGeneral < variableJauge :
                 "Vous n'avez pas assez de civils dans votre armée générale."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -461,8 +487,8 @@ label donCivilsBeige:
             else :
                 p "Je vous envoie des civils"
                 a "Merci commandant"
-                $ populationGeneral -= 30
-                $ populationRegionBeige += 30
+                $ populationGeneral -= variableJauge
+                $ populationRegionBeige += variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -482,12 +508,17 @@ label ministreFinancesBeige2 :
 
 screen ministreFinancesBeige2:
     imagebutton :
+        idle "modifyJauge"
+        xalign 0.5
+        yalign 0.25
+        action  [SetVariable("lastScreen", "ministreFinancesBeige2"), Jump("variableJauge")]
+    imagebutton :
         idle "financesGeneral"
         xpos 280
         yalign 0.5
         at choix_icons
         action  Jump("requisitionFinancesBeige")
-    text "+30" :
+    text " +%d" % variableJauge:
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -497,7 +528,7 @@ screen ministreFinancesBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionFinancesBeige")
-    text "-30" :
+    text " -%d" % variableJauge:
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -512,7 +543,7 @@ screen ministreFinancesBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donFinancesBeige")
-    text "+30" :
+    text " +%d" % variableJauge:
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -522,7 +553,7 @@ screen ministreFinancesBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donFinancesBeige")
-    text "-30" :
+    text " -%d" % variableJauge:
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -533,22 +564,22 @@ screen ministreFinancesBeige2:
 
 label requisitionFinancesBeige:
             p "Je souhaite requisitionner de l'argent"
-            if argentRegionBeige < 31 :
+            if argentRegionBeige < variableJauge :
                 a "Veuillez m'excuser mon commandant mais nous ne pouvons pas nous permettre ce sacrifice."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ argentGeneral += 30
-                $ argentRegionBeige -= 30
+                $ argentGeneral += variableJauge
+                $ argentRegionBeige -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
 
 label donFinancesBeige:
-            if argentGeneral < 31 :
+            if argentGeneral < variableJauge :
                 p "Je n'ai pas assez d'argent."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -556,8 +587,8 @@ label donFinancesBeige:
             else :
                 p "Je vous envoie de l'argent"
                 a "Merci commandant"
-                $ argentGeneral -= 30
-                $ argentRegionBeige += 30
+                $ argentGeneral -= variableJauge
+                $ argentRegionBeige += variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -578,12 +609,17 @@ label ministreAmbassadeurBeige2 :
 
 screen ministreAmbassadeurBeige2:
     imagebutton :
+        idle "modifyJauge"
+        xalign 0.5
+        yalign 0.25
+        action  [SetVariable("lastScreen", "ministreAmbassadeurBeige2"), Jump("variableJauge")]
+    imagebutton :
         idle "armyBeige"
         xalign 0.295
         yalign 0.3
         at choix_icons
         action  Jump("augmenterArmeeEmbassadeurBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xalign 0.3
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -593,7 +629,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterArmeeEmbassadeurBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xalign 0.38
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -609,7 +645,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action  Jump("augmenterNourritureAmbassadeurBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xalign 0.6
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -619,7 +655,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text "-15" :
+    text " -%d" % variableJaugeDiv2: 
         xalign 0.69
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -629,7 +665,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text "-15" :
+    text " -%d" % variableJaugeDiv2: 
         xalign 0.78
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -645,7 +681,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("vendreNourritureAmbassadeurBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xalign 0.3
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -655,7 +691,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("vendreNourritureAmbassadeurBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xalign 0.38
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -671,7 +707,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("reintegrerSoldatsAmbassadeurBeige")
-    text "+30" :
+    text " +%d" % variableJauge: 
         xalign 0.69
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -681,7 +717,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("reintegrerSoldatsAmbassadeurBeige")
-    text "-30" :
+    text " -%d" % variableJauge: 
         xalign 0.628
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -694,15 +730,15 @@ screen ministreAmbassadeurBeige2:
 
 label augmenterArmeeEmbassadeurBeige:
             p "Je souhaite que vous entrainez des civils en soldats"
-            if populationRegionBeige < 31 :
+            if populationRegionBeige < variableJauge :
                 a "Nous ne pouvons pas nous permettre d'entraîner autant de civils, notre population est déjà faible..."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ populationRegionBeige -= 30
-                $ armeeRegionBeige += 30
+                $ populationRegionBeige -= variableJauge
+                $ armeeRegionBeige += variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -710,21 +746,21 @@ label augmenterArmeeEmbassadeurBeige:
 
 label augmenterNourritureAmbassadeurBeige:
             p "Je souhaite que vous produisiez plus de nourriture"
-            if argentRegionBeige < 16 :
+            if argentRegionBeige < variableJaugeDiv2 :
                 a "Nous n'avons pas les moyens de produire plus de nourriture actuellement."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
-            if populationRegionBeige < 16 :
+            if populationRegionBeige < variableJaugeDiv2 :
                 a "Nous ne pouvons pas nous permettre de risquer le peu de paysans qu'il nous reste avec du travail forcé."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ nourritureGeneral += 30
-                $ populationRegionBeige -= 15
-                $ argentRegionBeige -= 15
+                $ nourritureGeneral += variableJauge
+                $ populationRegionBeige -= variableJaugeDiv2
+                $ argentRegionBeige -= variableJaugeDiv2
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -732,15 +768,15 @@ label augmenterNourritureAmbassadeurBeige:
 
 label vendreNourritureAmbassadeurBeige:
             p "Je souhaite que vous vendiez de la nourriture contre de l'argent"
-            if nourritureRegionBeige < 31 :
+            if nourritureRegionBeige < variableJauge :
                 a "Nous n'avons pas assez de nourriture à vous vendre."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ argentRegionBeige += 30
-                $ nourritureRegionBeige -= 30
+                $ argentRegionBeige += variableJauge
+                $ nourritureRegionBeige -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -750,15 +786,15 @@ label vendreNourritureAmbassadeurBeige:
 
 label reintegrerSoldatsAmbassadeurBeige:
             p "Je souhaite que des soldats retournent au statut de civil"
-            if armeeRegionBeige < 31 :
+            if armeeRegionBeige < variableJauge :
                 a "Nous ne pouvons pas nous passer du si peu de soldats qu'il nous reste."
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
-                $ populationRegionBeige += 30
-                $ armeeRegionBeige -= 30
+                $ populationRegionBeige += variableJauge
+                $ armeeRegionBeige -= variableJauge
                 $ regionBeigeActionFaite = True
                 hide screen statsInteractionBeige
                 scene mapRegionGrise
@@ -789,29 +825,164 @@ screen attaqueBeige:
             xpos 450
             ypos 50 
 
-label beigeAttaqueGrise:
-    $regionBeigeActionFaite=True
+#negociation guerre de beige vers grise
+screen negociationBeigeGrise:
+    imagebutton :
+        idle "accepter"
+        xpos 280
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeGrise")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeGrise")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeGrise:
     if armeeRegionBeige>=armeeRegionGrise :
         $ armeeRegionBeige -=armeeRegionGrise
         $ armeeRegionGrise = 0
         $ regionGriseActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeGrise
+        scene mapRegionGrise
         call screen vueTerritoire
     elif armeeRegionBeige<armeeRegionGrise:
         $ armeeRegionGrise-=armeeRegionBeige
         $ armeeRegionBeige =0
+        $ regionBeigeActive = False
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeGrise
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeGrise:
+    if armeeRegionBeige>=armeeRegionGrise :
+        $ argentRegionBeige += argentRegionGrise//4
+        $ argentRegionGrise -= argentRegionGrise//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeGrise
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionGrise:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionGrise += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeGrise
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueGrise:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionGrise :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeGrise
+    elif armeeRegionBeige<armeeRegionGrise:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeGrise
+
+#negociation guerre de beige vers jaune
+screen negociationBeigeJaune:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeJaune")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeJaune")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeJaune:
+    if armeeRegionBeige>=armeeRegionJaune :
+        $ armeeRegionBeige -=armeeRegionJaune
+        $ armeeRegionJaune = 0
+        $ regionJauneActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeJaune
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionJaune:
+        $ armeeRegionJaune-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeJaune
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeJaune:
+    if armeeRegionBeige>=armeeRegionJaune :
+        $ argentRegionBeige += argentRegionJaune//4
+        $ argentRegionJaune -= argentRegionJaune//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeJaune
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionJaune:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionJaune += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeJaune
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label beigeAttaqueJaune:
     $regionBeigeActionFaite=True
     if armeeRegionBeige>=armeeRegionJaune :
-        $ armeeRegionBeige -=armeeRegionJaune
-        $ armeeRegionJaune = 0
-        $ regionJauneActive=True
-        call screen vueTerritoire
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeJaune
     elif armeeRegionBeige<armeeRegionJaune:
-        $ armeeRegionJaune-=armeeRegionBeige
-        $ armeeRegionBeige =0
-        call screen vueTerritoire
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeJaune
 
 
 
@@ -822,29 +993,48 @@ label upgradeRegionBeige:
     call screen upgradeRegionBeige
 screen upgradeRegionBeige:       
     imagebutton :
-        idle "boxInteragir1"
-        xpos 300
-        ypos 100
+        idle "upgrade1"
+        xalign 0.3
+        yalign 0.5
         action  Jump("upgradeChoix1")
     imagebutton :
-        idle "boxInteragir2"
-        xpos 680
-        ypos 100
+        idle "upgrade2"
+        xalign 0.7
+        yalign 0.5
         action  Jump("upgradeChoix2")
 
 label upgradeChoix1:
-
-            if argentRegionBeige > 50 and populationRegionBeige > 50 and nourritureRegionBeige > 25 :
-                return
-            else :
-                a "Il vous manque des ressources "
-                hide screen statsInteractionBeige
-                scene mapRegionGrise
-                call screen vueTerritoire
+    if argentRegionBeige >  50 and populationRegionBeige > 50 and nourritureRegionBeige > 25 :
+        if niveauRegionBeige<6 :
+            $regionBeigeActionFaite=True
+            $ argentRegionBeige -= 50
+            $ populationRegionBeige -=50
+            $ nourritureRegionBeige-=25
+            $ niveauRegionBeige+=1
+            hide screen statsInteractionBeige
+            scene mapRegionGrise
+            call screen vueTerritoire
+        else :
+            a "Vous êtes déjà au niveau maximum"    
+    else :
+        a "Il vous manque des ressources "
+        hide screen statsInteractionBeige
+        scene mapRegionGrise
+        call screen vueTerritoire
 
 label upgradeChoix2:
             if argentRegionBeige > 130 and populationRegionBeige > 130 and nourritureRegionBeige > 65 :
-               return
+                if niveauRegionBeige<6 :
+                    $regionBeigeActionFaite=True
+                    $ argentRegionBeige -= 130
+                    $ populationRegionBeige -= 130
+                    $ nourritureRegionBeige-=35         
+                    $ niveauRegionBeige+=3
+                    hide screen statsInteractionBeige
+                    scene mapRegionGrise
+                    call screen vueTerritoire
+                else :
+                    a "Vous êtes déjà au niveau maximum"    
             else :
                 a "Il vous manque des ressources "
                 hide screen statsInteractionBeige

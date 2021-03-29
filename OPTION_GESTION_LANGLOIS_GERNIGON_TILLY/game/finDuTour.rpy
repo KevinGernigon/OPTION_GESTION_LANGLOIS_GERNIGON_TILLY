@@ -1,13 +1,13 @@
 ﻿label actionsIA:
-    $ chanceAttaqueBeige = renpy.random.randint(1, 7)
-    $ chanceAttaqueBleue = renpy.random.randint(1, 7)
-    $ chanceAttaqueGrise = renpy.random.randint(1, 7)
-    $ chanceAttaqueJaune = renpy.random.randint(1, 7)
-    $ chanceAttaqueOrange = renpy.random.randint(1, 7)
-    $ chanceAttaqueRose = renpy.random.randint(1, 7)
-    $ chanceAttaqueRouge = renpy.random.randint(1, 7)
-    $ chanceAttaqueVerte = renpy.random.randint(1, 7)
-    $ chanceAttaqueViolette = renpy.random.randint(1, 7)
+    $ chanceAttaqueBeige = renpy.random.randint(1, 4)
+    $ chanceAttaqueBleue = renpy.random.randint(1, 4)
+    $ chanceAttaqueGrise = renpy.random.randint(1, 4)
+    $ chanceAttaqueJaune = renpy.random.randint(1, 4)
+    $ chanceAttaqueOrange = renpy.random.randint(1, 4)
+    $ chanceAttaqueRose = renpy.random.randint(1, 4)
+    $ chanceAttaqueRouge = renpy.random.randint(1, 4)
+    $ chanceAttaqueVerte = renpy.random.randint(1, 4)
+    $ chanceAttaqueViolette = renpy.random.randint(1, 4)
 
     #possibilité region beige
     if regionBeigeActive == False and regionJauneActive == True:
@@ -279,108 +279,9 @@ label victoire:
         $ regionRougeActionFaite = False
         $ regionVerteActionFaite = False
         $ regionVioletteActionFaite = False
-
-        if  regionBeigeActive == True and nourritureRegionBeige == 0:
-
-            $ armeeRegionBeige -= 30
-
-            $ populationRegionBeige -= 30
-
-            p"La région Beige n'a plus de nourriture la population meurt de faim"
-
-        if  regionRougeActive == True and nourritureRegionRouge == 0:
-
-            $ armeeRegionRouge -= 30
-
-            $ populationRegionRouge -= 30
-
-            p"La région Rouge n'a plus de nourriture la population meurt de faim"
-
-        if  regionVioletteActive == True and nourritureRegionViolette == 0:
-
-            $ armeeRegionViolette -= 30
-
-            $ populationRegionViolette -= 30
-
-            p"La région Violette n'a plus de nourriture la population meurt de faim"
-
-        if  regionVerteActive == True and nourritureRegionVerte == 0:
-
-            $ armeeRegionVerte -= 30
-
-            $ populationRegionVerte -= 30
-
-            p"La région Verte n'a plus de nourriture la population meurt de faim"
-
-        if  regionGriseActive == True and nourritureRegionGrise == 0:
-
-            $ armeeRegionGrise -= 30
-
-            $ populationRegionGrise -= 30
-
-            p"La région Cyan n'a plus de nourriture la population meurt de faim"
-
-        if  regionRoseActive == True and nourritureRegionRose == 0:
-
-            $ armeeRegionRose -= 30
-
-            $ populationRegionRose -= 30
-
-            p"La région Rose n'a plus de nourriture la population meurt de faim"
-
-        if  regionJauneActive == True and nourritureRegionJaune == 0:
-
-            $ armeeRegionJaune -= 30
-
-            $ populationRegionJaune -= 30
-
-            p"La région Jaune n'a plus de nourriture la population meurt de faim"
-
-        if  regionOrangeActive == True and nourritureRegionOrange == 0:
-
-            $ armeeRegionOrange -= 30
-
-            $ populationRegionOrange -= 30
-
-            p"La région Orange n'a plus de nourriture la population meurt de faim"
-
-        if  regionBleueActive == True and nourritureRegionBleue == 0:
-
-            $ armeeRegionBleue -= 30
-
-            $ populationRegionBleue -= 30
-
-            p"La région Bleue n'a plus de nourriture la population meurt de faim"
-
         jump gestionRevenu
 
 label gestionRevenu:
-    #Armee generale
-    if regionBleueActive == True:
-        $ nombreRegionActive += 1
-
-    if regionGriseActive == True:
-        $ nombreRegionActive += 1
-    if regionJauneActive == True:
-        $ nombreRegionActive += 1
-    if regionBeigeActive == True:
-        $ nombreRegionActive += 1
-    if regionOrangeActive == True:
-        $ nombreRegionActive += 1
-    if regionRoseActive == True:
-        $ nombreRegionActive += 1
-    if regionRougeActive == True:
-        $ nombreRegionActive += 1
-    if regionVerteActive == True:
-        $ nombreRegionActive += 1
-    if regionVioletteActive == True:
-        $ nombreRegionActive += 1
-
-    $ armeeGeneral += 10 * nombreRegionActive
-    $ argentGeneral = 10 * nombreRegionActive
-    $ populationGeneral = 10 * nombreRegionActive
-    $ nourritureGeneral = 10 * nombreRegionActive
-    $ nombreRegionActive = 0
 
     #Beige
     if niveauRegionBeige == 2:
@@ -577,5 +478,8 @@ label gestionRevenu:
         $ regionsActives +=1
 
 
-
+    $ armeeGeneral += 15* regionsActives
+    $ argentGeneral += 20* regionsActives
+    $ populationGeneral += 15* regionsActives
+    $ regionsActives=0
     call screen vueTerritoire

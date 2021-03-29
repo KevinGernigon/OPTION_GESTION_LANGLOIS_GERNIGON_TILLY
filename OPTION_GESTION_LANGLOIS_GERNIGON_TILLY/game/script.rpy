@@ -160,8 +160,6 @@ default regionRougeActive = False
 default regionVerteActive = False
 default regionVioletteActive = False
 
-default nombreRegionActive = 0
-
 default regionBeigeActionFaite = False
 default regionBleueActionFaite = False
 default regionGriseActionFaite = False
@@ -181,7 +179,6 @@ default niveauRegionRose = 1
 default niveauRegionRouge = 1
 default niveauRegionVerte = 1
 default niveauRegionViolette = 1
-
 
 default multiplierBeige = 0.1
 default multiplierBleue = 0.1
@@ -309,7 +306,7 @@ screen infoRegionBleue :
             idle "../images/exit.png"
             at exit_zoom
             xpos 700
-            ypos 290
+            ypos 290  
             action  Hide("infoRegionBleue")
 
 
@@ -379,7 +376,7 @@ screen infoRegionGrise :
             idle "../images/exit.png"
             at exit_zoom
             xpos 650
-            ypos 20
+            ypos 20  
             action  Hide("infoRegionGrise")
 
 
@@ -448,7 +445,7 @@ screen infoRegionJaune :
             idle "../images/exit.png"
             at exit_zoom
             xpos 700
-            ypos 110
+            ypos 110  
             action  Hide("infoRegionJaune")
 
 
@@ -518,7 +515,7 @@ screen infoRegionOrange :
             idle "../images/exit.png"
             at exit_zoom
             xpos 450
-            ypos 310
+            ypos 310  
             action  Hide("infoRegionOrange")
 
 
@@ -587,7 +584,7 @@ screen infoRegionRose :
             idle "../images/exit.png"
             at exit_zoom
             xpos 400
-            ypos 110
+            ypos 110  
             action  Hide("infoRegionRose")
 
 
@@ -655,7 +652,7 @@ screen infoRegionRouge :
             idle "../images/exit.png"
             at exit_zoom
             xpos 1050
-            ypos 285
+            ypos 285  
             action  Hide("infoRegionRouge")
 
 
@@ -726,7 +723,7 @@ screen infoRegionVerte :
             idle "../images/exit.png"
             at exit_zoom
             xpos 1050
-            ypos 410
+            ypos 410  
             action  Hide("infoRegionVerte")
 
 
@@ -796,7 +793,7 @@ screen infoRegionViolette :
             idle "../images/exit.png"
             at exit_zoom
             xpos 350
-            ypos 410
+            ypos 410  
             action  Hide("infoRegionViolette")
 
 
@@ -875,7 +872,7 @@ screen choixRegionDepart:
             xpos 42
             ypos 383
             action Jump("startRegionViolette")
-
+  
 
 transform variableJaugeText:
     zoom 4
@@ -904,24 +901,24 @@ screen variableJauge:
         idle "checkbox"
         yalign 0.75
         xalign 0.5
-        action  Jump(lastScreen)
+        action  Jump(lastScreen)  
     imagebutton :
         idle "imagePlusTen"
         yalign 0.5
         xalign 0.80
-        action  Jump("variableJaugePlusTen")
+        action  Jump("variableJaugePlusTen")  
 
 
 label variableJaugePlus:
-
+    
     $ variableJauge+=1
     $ variableJaugeDiv2+=0.5
-    call screen variableJauge
+    call screen variableJauge 
 
 label variableJaugePlusTen:
     $ variableJauge+=10
     $ variableJaugeDiv2 +=5
-    call screen variableJauge
+    call screen variableJauge 
 
 label variableJaugeMoins:
     $ variableJauge-=1
@@ -930,4 +927,4 @@ label variableJaugeMoins:
     $ variableJaugeDiv2-=0.5
     if variableJaugeDiv2 < 0 :
         $ variableJaugeDiv2 = 0
-    call screen variableJauge
+    call screen variableJauge 

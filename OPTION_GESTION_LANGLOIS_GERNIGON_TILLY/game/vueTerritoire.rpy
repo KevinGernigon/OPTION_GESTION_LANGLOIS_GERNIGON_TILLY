@@ -122,9 +122,9 @@ screen vueTerritoire:
         ypos 20
     text "%d" % jour :
         xpos 80
-        ypos 20
+        ypos 20 
     imagebutton :
         idle "btnFindeTour"
         xpos 450
         ypos 600
-        action  Jump("actionsIA")
+        action  Jump("iadeplacements")

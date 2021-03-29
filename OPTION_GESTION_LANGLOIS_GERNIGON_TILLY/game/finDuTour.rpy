@@ -77,13 +77,7 @@
             $ niveauRegionJaune += 1
             g "La région Cyan a été libéré par la région Jaune"
             nvl clear
-    if regionJauneActive == False and regionOrangeActive == True:
-        if armeeRegionJaune > armeeRegionOrange and chanceAttaqueJaune == 2:
-            $ armeeRegionJaune = armeeRegionJaune - armeeRegionOrange
-            $ regionOrangeActive = False
-            $ niveauRegionJaune += 1
-            g "La région Orange a été libéré par la région Jaune"
-            nvl clear
+
     #possibilité region Rose
     if regionRoseActive == False and regionGriseActive == True:
         if armeeRegionRose > armeeRegionGrise and chanceAttaqueRose == 2:

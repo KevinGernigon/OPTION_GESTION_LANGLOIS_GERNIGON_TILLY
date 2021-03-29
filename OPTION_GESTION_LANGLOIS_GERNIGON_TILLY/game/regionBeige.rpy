@@ -46,7 +46,7 @@ screen infoRegionBeige :
                 xpos 800
                 ypos 220
                 action Jump("interactionBeige")
-        if (regionJauneActive==False or regionGriseActive==False) and regionBeigeActionFaite==False:
+        if (regionJauneActive==False or regionGriseActive==False) and regionBeigeActionFaite==False:        
             imagebutton :
                 idle "../images/attaquer.png"
                 xpos 800
@@ -56,7 +56,7 @@ screen infoRegionBeige :
             idle "../images/exit.png"
             at exit_zoom
             xpos 1000
-            ypos 90
+            ypos 90  
             action  Hide("infoRegionBeige")
 
 
@@ -206,7 +206,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionTroupesArmeeBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge:  
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -216,7 +216,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionTroupesArmeeBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge:   
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -231,7 +231,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donTroupesArmeeBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge:  
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -241,7 +241,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donTroupesArmeeBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge:  
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -315,7 +315,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionNourritureAgricultureBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -325,7 +325,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionNourritureAgricultureBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -340,7 +340,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donNourritureAgricultureBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -350,7 +350,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donNourritureAgricultureBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xpos 870
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -418,7 +418,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionCivilsBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -428,7 +428,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionCivilsBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -443,7 +443,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donCivilsBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -453,7 +453,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donCivilsBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -619,7 +619,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action  Jump("augmenterArmeeEmbassadeurBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xalign 0.3
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -629,7 +629,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterArmeeEmbassadeurBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xalign 0.38
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -645,7 +645,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action  Jump("augmenterNourritureAmbassadeurBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xalign 0.6
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -655,7 +655,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text " -%d" % variableJaugeDiv2:
+    text " -%d" % variableJaugeDiv2: 
         xalign 0.69
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -665,7 +665,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text " -%d" % variableJaugeDiv2:
+    text " -%d" % variableJaugeDiv2: 
         xalign 0.78
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -681,7 +681,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("vendreNourritureAmbassadeurBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xalign 0.3
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -691,7 +691,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("vendreNourritureAmbassadeurBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xalign 0.38
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -707,7 +707,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("reintegrerSoldatsAmbassadeurBeige")
-    text " +%d" % variableJauge:
+    text " +%d" % variableJauge: 
         xalign 0.69
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -717,7 +717,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("reintegrerSoldatsAmbassadeurBeige")
-    text " -%d" % variableJauge:
+    text " -%d" % variableJauge: 
         xalign 0.628
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -805,7 +805,7 @@ label reintegrerSoldatsAmbassadeurBeige:
 label attaqueBeige:
     hide screen infoRegionBeige
     call screen attaqueBeige
-screen attaqueBeige:
+screen attaqueBeige:       
     if regionJauneActive==False:
         imagebutton:
             idle "regionJauneRouge.png"
@@ -814,7 +814,7 @@ screen attaqueBeige:
             action Jump("beigeAttaqueJaune")
         image "logoAttaque":
             xpos 575
-            ypos 200
+            ypos 200          
     if regionGriseActive==False:
         imagebutton:
             idle "regionGriseRouge.png"
@@ -823,7 +823,7 @@ screen attaqueBeige:
             action Jump("beigeAttaqueGrise")
         image "logoAttaque":
             xpos 450
-            ypos 50
+            ypos 50 
 
 #negociation guerre de beige vers grise
 screen negociationBeigeGrise:
@@ -985,12 +985,13 @@ label beigeAttaqueJaune:
         call screen negociationBeigeJaune
 
 
-#------------------------------------------------------------------------------------------------------
+
+
 
 label upgradeRegionBeige:
     hide screen infoRegionBeige
     call screen upgradeRegionBeige
-screen upgradeRegionBeige:
+screen upgradeRegionBeige:       
     imagebutton :
         idle "upgrade1"
         xalign 0.3
@@ -1002,7 +1003,7 @@ screen upgradeRegionBeige:
         yalign 0.5
         action  Jump("upgradeChoix2")
 
-label upgradeChoixBeige1:
+label upgradeChoix1:
     if argentRegionBeige >  50 and populationRegionBeige > 50 and nourritureRegionBeige > 25 :
         if niveauRegionBeige<6 :
             $regionBeigeActionFaite=True
@@ -1014,26 +1015,26 @@ label upgradeChoixBeige1:
             scene mapRegionGrise
             call screen vueTerritoire
         else :
-            a "Vous êtes déjà au niveau maximum"
+            a "Vous êtes déjà au niveau maximum"    
     else :
         a "Il vous manque des ressources "
         hide screen statsInteractionBeige
         scene mapRegionGrise
         call screen vueTerritoire
 
-label upgradeChoixBeige2:
+label upgradeChoix2:
             if argentRegionBeige > 130 and populationRegionBeige > 130 and nourritureRegionBeige > 65 :
                 if niveauRegionBeige<6 :
                     $regionBeigeActionFaite=True
                     $ argentRegionBeige -= 130
                     $ populationRegionBeige -= 130
-                    $ nourritureRegionBeige-=35
+                    $ nourritureRegionBeige-=35         
                     $ niveauRegionBeige+=3
                     hide screen statsInteractionBeige
                     scene mapRegionGrise
                     call screen vueTerritoire
                 else :
-                    a "Vous êtes déjà au niveau maximum"
+                    a "Vous êtes déjà au niveau maximum"    
             else :
                 a "Il vous manque des ressources "
                 hide screen statsInteractionBeige

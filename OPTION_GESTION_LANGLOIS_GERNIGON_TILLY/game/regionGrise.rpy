@@ -1,5 +1,4 @@
-﻿
-label declarerGuerreRegionGrise:
+﻿label declarerGuerreRegionGrise:
     call screen declarerGuerreRegionGrise
 screen declarerGuerreRegionGrise :
     $ popUpInfoRegionOn=False
@@ -255,7 +254,7 @@ label requisitionTroupesArmeeGrise:
             if armeeRegionGrise < variableJauge :
                 a "Nous n'avons pas assez de soldats à vous léguer mon commandant."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -263,14 +262,14 @@ label requisitionTroupesArmeeGrise:
                 $ armeeRegionGrise -=  variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label donTroupesArmeeGrise:
             if armeeGeneral < variableJauge :
                 p "Vous ne pouvez pas faire ça, vous ne possédez pas assez de soldats"
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 p "Je souhaite renforcer la zone je vous ais donc envoyé des soldats"
@@ -279,7 +278,7 @@ label donTroupesArmeeGrise:
                 $ armeeGeneral -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -366,7 +365,7 @@ label requisitionNourritureAgricultureGrise:
             if nourritureRegionGrise < variableJauge :
                 a "Nous ne pouvons pas vous donner de nourriture, nous subvenons tout juste à nos besoins."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -374,14 +373,14 @@ label requisitionNourritureAgricultureGrise:
                 $ nourritureRegionGrise -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label donNourritureAgricultureGrise:
             if nourritureGeneral < variableJauge :
                 p "Je ne peux pas vous donner de nourriture, je n'en possède pas assez."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 p "Je vous envoie de la nourriture"
@@ -390,7 +389,7 @@ label donNourritureAgricultureGrise:
                 $ nourritureRegionGrise += variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -467,7 +466,7 @@ label requisitionCivilsGrise:
             if populationRegionGrise < variableJauge :
                 a "Veuillez m'excuser mon commandant, nous n'avons pas assez de civils à vous confier."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -475,14 +474,14 @@ label requisitionCivilsGrise:
                 $ populationRegionGrise -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label donCivilsGrise:
             if populationGeneral < variableJauge :
                 "Vous n'avez pas assez de civils dans votre armée générale."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 p "Je vous envoie des civils"
@@ -491,7 +490,7 @@ label donCivilsGrise:
                 $ populationRegionGrise += variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -567,7 +566,7 @@ label requisitionFinancesGrise:
             if argentRegionGrise < variableJauge :
                 a "Veuillez m'excuser mon commandant mais nous ne pouvons pas nous permettre ce sacrifice."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -575,14 +574,14 @@ label requisitionFinancesGrise:
                 $ argentRegionGrise -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label donFinancesGrise:
             if argentGeneral < variableJauge :
                 p "Je n'ai pas assez d'argent."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 p "Je vous envoie de l'argent"
@@ -591,7 +590,7 @@ label donFinancesGrise:
                 $ argentRegionGrise += variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -733,7 +732,7 @@ label augmenterArmeeEmbassadeurGrise:
             if populationRegionGrise < variableJauge :
                 a "Nous ne pouvons pas nous permettre d'entraîner autant de civils, notre population est déjà faible..."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -741,7 +740,7 @@ label augmenterArmeeEmbassadeurGrise:
                 $ armeeRegionGrise += variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label augmenterNourritureAmbassadeurGrise:
@@ -749,12 +748,12 @@ label augmenterNourritureAmbassadeurGrise:
             if argentRegionGrise < variableJaugeDiv2 :
                 a "Nous n'avons pas les moyens de produire plus de nourriture actuellement."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             if populationRegionGrise < variableJaugeDiv2 :
                 a "Nous ne pouvons pas nous permettre de risquer le peu de paysans qu'il nous reste avec du travail forcé."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -763,7 +762,7 @@ label augmenterNourritureAmbassadeurGrise:
                 $ argentRegionGrise -= variableJaugeDiv2
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 label vendreNourritureAmbassadeurGrise:
@@ -771,7 +770,7 @@ label vendreNourritureAmbassadeurGrise:
             if nourritureRegionGrise < variableJauge :
                 a "Nous n'avons pas assez de nourriture à vous vendre."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -779,7 +778,7 @@ label vendreNourritureAmbassadeurGrise:
                 $ nourritureRegionGrise -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -789,7 +788,7 @@ label reintegrerSoldatsAmbassadeurGrise:
             if armeeRegionGrise < variableJauge :
                 a "Nous ne pouvons pas nous passer du si peu de soldats qu'il nous reste."
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
             else :
                 a "Très bien commandant "
@@ -797,7 +796,7 @@ label reintegrerSoldatsAmbassadeurGrise:
                 $ armeeRegionGrise -= variableJauge
                 $ regionGriseActionFaite = True
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire
 
 
@@ -856,7 +855,7 @@ label refusNegociationGriseBeige:
         $ regionBeigeActive=True
         hide screen statsInteractionGrise
         hide screen negociationGriseBeige
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
     elif armeeRegionGrise<armeeRegionBeige:
         $ armeeRegionBeige-=armeeRegionGrise
@@ -864,7 +863,7 @@ label refusNegociationGriseBeige:
         $ regionGriseActive = False
         hide screen statsInteractionGrise
         hide screen negociationGriseBeige
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label acceptationNegociationGriseBeige:
@@ -873,14 +872,14 @@ label acceptationNegociationGriseBeige:
         $ argentRegionBeige -= argentRegionBeige//4
         hide screen statsInteractionGrise
         hide screen negociationGriseBeige
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
     elif armeeRegionGrise<armeeRegionBeige:
         $ argentRegionGrise -= argentRegionGrise//2
         $ argentRegionBeige += argentRegionGrise//2
         hide screen statsInteractionGrise
         hide screen negociationGriseBeige
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label griseAttaqueBeige:
@@ -936,14 +935,14 @@ label refusNegociationGriseJaune:
         $ regionJauneActive=True
         hide screen statsInteractionGrise
         hide screen negociationGriseJaune
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
     elif armeeRegionGrise<armeeRegionJaune:
         $ armeeRegionJaune-=armeeRegionGrise
         $ armeeRegionGrise =0
         hide screen statsInteractionGrise
         hide screen negociationGriseJaune
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label acceptationNegociationGriseJaune:
@@ -952,14 +951,14 @@ label acceptationNegociationGriseJaune:
         $ argentRegionJaune -= argentRegionJaune//4
         hide screen statsInteractionGrise
         hide screen negociationGriseJaune
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
     elif armeeRegionGrise<armeeRegionJaune:
         $ argentRegionGrise -= argentRegionGrise//2
         $ argentRegionJaune += argentRegionGrise//2
         hide screen statsInteractionGrise
         hide screen negociationGriseJaune
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label griseAttaqueJaune:
@@ -1040,7 +1039,7 @@ label acceptationNegociationGriseRose:
         scene mapRegionGrise
         call screen vueTerritoire
 
-label griseAttaqueRose:
+label gr    AttaqueRose:
     $regionGriseActionFaite=True
     if armeeRegionGrise>=armeeRegionRose :
         hide screen vueTerritoire
@@ -1089,14 +1088,14 @@ label upgradeChoixGrise1:
             $ nourritureRegionGrise-=25
             $ niveauRegionGrise+=1
             hide screen statsInteractionGrise
-            scene mapRegionBeige
+            scene mapRegionGrise
             call screen vueTerritoire
         else :
             a "Vous êtes déjà au niveau maximum"
     else :
         a "Il vous manque des ressources "
         hide screen statsInteractionGrise
-        scene mapRegionBeige
+        scene mapRegionGrise
         call screen vueTerritoire
 
 label upgradeChoixGrise2:
@@ -1108,12 +1107,12 @@ label upgradeChoixGrise2:
                     $ nourritureRegionGrise-=35
                     $ niveauRegionGrise+=3
                     hide screen statsInteractionGrise
-                    scene mapRegionBeige
+                    scene mapRegionGrise
                     call screen vueTerritoire
                 else :
                     a "Vous êtes déjà au niveau maximum"
             else :
                 a "Il vous manque des ressources "
                 hide screen statsInteractionGrise
-                scene mapRegionBeige
+                scene mapRegionGrise
                 call screen vueTerritoire

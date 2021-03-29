@@ -1,5 +1,4 @@
-﻿
-label declarerGuerreRegionJaune:
+﻿label declarerGuerreRegionJaune:
     call screen declarerGuerreRegionJaune
 screen declarerGuerreRegionJaune :
     $ popUpInfoRegionOn=False
@@ -1152,14 +1151,14 @@ screen upgradeRegionJaune:
         idle "upgrade1"
         xalign 0.3
         yalign 0.5
-        action  Jump("upgradeChoix1")
+        action  Jump("upgradeChoix1Jaune")
     imagebutton :
         idle "upgrade2"
         xalign 0.7
         yalign 0.5
-        action  Jump("upgradeChoix2")
+        action  Jump("upgradeChoix2Jaune")
 
-label upgradeChoix1:
+label upgradeChoix1Jaune:
     if argentRegionJaune >  50 and populationRegionJaune > 50 and nourritureRegionJaune > 25 :
         if niveauRegionJaune<6 :
             $regionJauneActionFaite=True
@@ -1178,7 +1177,7 @@ label upgradeChoix1:
         scene mapRegionGrise
         call screen vueTerritoire
 
-label upgradeChoix2:
+label upgradeChoix2Jaune:
             if argentRegionJaune > 130 and populationRegionJaune > 130 and nourritureRegionJaune > 65 :
                 if niveauRegionJaune<6 :
                     $regionJauneActionFaite=True

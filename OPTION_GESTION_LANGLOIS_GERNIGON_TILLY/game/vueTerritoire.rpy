@@ -124,7 +124,8 @@ screen vueTerritoire:
         xpos 80
         ypos 20 
     imagebutton :
-        idle "btnFindeTour"
+        idle "fin_de_tour_idle.png"
+        hover "fin_de_tour_hover.png"        
         xpos 450
-        ypos 600
-        action  Jump("iadeplacements")
+        ypos 500
+        action  Jump("actionsIA")

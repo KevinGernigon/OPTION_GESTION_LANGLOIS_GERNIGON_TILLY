@@ -983,6 +983,84 @@ label griseAttaqueJaune:
         a "Vous n'avez aucune chance mécréant !"
         a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
         call screen negociationGriseJaune
+#negociation guerre de grise vers rose
+screen negociationGriseRose:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationGriseRose")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationGriseRose")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationGriseRose:
+    if armeeRegionGrise>=armeeRegionRose :
+        $ armeeRegionGrise -=armeeRegionRose
+        $ armeeRegionRose = 0
+        $ regionRoseActive=True
+        hide screen statsInteractionGrise
+        hide screen negociationGriseRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionGrise<armeeRegionRose:
+        $ armeeRegionRose-=armeeRegionGrise
+        $ armeeRegionGrise =0
+        hide screen statsInteractionGrise
+        hide screen negociationGriseRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationGriseRose:
+    if armeeRegionGrise>=armeeRegionRose :
+        $ argentRegionGrise += argentRegionRose//4
+        $ argentRegionRose -= argentRegionRose//4
+        hide screen statsInteractionGrise
+        hide screen negociationGriseRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionGrise<armeeRegionRose:
+        $ argentRegionGrise -= argentRegionGrise//2
+        $ argentRegionRose += argentRegionGrise//2
+        hide screen statsInteractionGrise
+        hide screen negociationGriseRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label griseAttaqueRose:
+    $regionGriseActionFaite=True
+    if armeeRegionGrise>=armeeRegionRose :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionGrise
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationGriseRose
+    elif armeeRegionGrise<armeeRegionRose:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionGrise
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationGriseRose
 
 
 #------------------------------------------------------------------------------------------------------

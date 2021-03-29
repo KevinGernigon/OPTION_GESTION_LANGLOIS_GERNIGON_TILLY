@@ -46,7 +46,7 @@ screen infoRegionBeige :
                 xpos 800
                 ypos 220
                 action Jump("interactionBeige")
-        if (regionJauneActive==False or regionGriseActive==False) and regionBeigeActionFaite==False:        
+        if (regionJauneActive==False or regionGriseActive==False) and regionBeigeActionFaite==False:
             imagebutton :
                 idle "../images/attaquer.png"
                 xpos 800
@@ -56,7 +56,7 @@ screen infoRegionBeige :
             idle "../images/exit.png"
             at exit_zoom
             xpos 1000
-            ypos 90  
+            ypos 90
             action  Hide("infoRegionBeige")
 
 
@@ -206,7 +206,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionTroupesArmeeBeige")
-    text " +%d" % variableJauge:  
+    text " +%d" % variableJauge:
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -216,7 +216,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionTroupesArmeeBeige")
-    text " -%d" % variableJauge:   
+    text " -%d" % variableJauge:
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -231,7 +231,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donTroupesArmeeBeige")
-    text " +%d" % variableJauge:  
+    text " +%d" % variableJauge:
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -241,7 +241,7 @@ screen ministreArmeeBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donTroupesArmeeBeige")
-    text " -%d" % variableJauge:  
+    text " -%d" % variableJauge:
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -315,7 +315,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionNourritureAgricultureBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -325,7 +325,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionNourritureAgricultureBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -340,7 +340,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donNourritureAgricultureBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -350,7 +350,7 @@ screen ministreAgricultureBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donNourritureAgricultureBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xpos 870
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -418,7 +418,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("requisitionCivilsBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xpos 300
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -428,7 +428,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("requisitionCivilsBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xpos 400
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -443,7 +443,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action  Jump("donCivilsBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xpos 980
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -453,7 +453,7 @@ screen ministreCivilsBeige2:
         yalign 0.5
         at choix_icons
         action Jump("donCivilsBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xpos 880
         yalign 0.6
         outlines [ (2, "#000", 0, 0) ]
@@ -619,7 +619,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action  Jump("augmenterArmeeEmbassadeurBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xalign 0.3
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -629,7 +629,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterArmeeEmbassadeurBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xalign 0.38
         yalign 0.4
         outlines [ (2, "#000", 0, 0) ]
@@ -645,7 +645,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action  Jump("augmenterNourritureAmbassadeurBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xalign 0.6
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -655,7 +655,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text " -%d" % variableJaugeDiv2: 
+    text " -%d" % variableJaugeDiv2:
         xalign 0.69
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -665,7 +665,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.3
         at choix_icons
         action Jump("augmenterNourritureAmbassadeurBeige")
-    text " -%d" % variableJaugeDiv2: 
+    text " -%d" % variableJaugeDiv2:
         xalign 0.78
         yalign 0.41
         outlines [ (2, "#000", 0, 0) ]
@@ -681,7 +681,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("vendreNourritureAmbassadeurBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xalign 0.3
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -691,7 +691,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("vendreNourritureAmbassadeurBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xalign 0.38
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -707,7 +707,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action  Jump("reintegrerSoldatsAmbassadeurBeige")
-    text " +%d" % variableJauge: 
+    text " +%d" % variableJauge:
         xalign 0.69
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -717,7 +717,7 @@ screen ministreAmbassadeurBeige2:
         yalign 0.7
         at choix_icons
         action Jump("reintegrerSoldatsAmbassadeurBeige")
-    text " -%d" % variableJauge: 
+    text " -%d" % variableJauge:
         xalign 0.628
         yalign 0.77
         outlines [ (2, "#000", 0, 0) ]
@@ -805,7 +805,7 @@ label reintegrerSoldatsAmbassadeurBeige:
 label attaqueBeige:
     hide screen infoRegionBeige
     call screen attaqueBeige
-screen attaqueBeige:       
+screen attaqueBeige:
     if regionJauneActive==False:
         imagebutton:
             idle "regionJauneRouge.png"
@@ -814,7 +814,7 @@ screen attaqueBeige:
             action Jump("beigeAttaqueJaune")
         image "logoAttaque":
             xpos 575
-            ypos 200          
+            ypos 200
     if regionGriseActive==False:
         imagebutton:
             idle "regionGriseRouge.png"
@@ -823,7 +823,7 @@ screen attaqueBeige:
             action Jump("beigeAttaqueGrise")
         image "logoAttaque":
             xpos 450
-            ypos 50 
+            ypos 50
 
 #negociation guerre de beige vers grise
 screen negociationBeigeGrise:
@@ -984,14 +984,491 @@ label beigeAttaqueJaune:
         a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
         call screen negociationBeigeJaune
 
+#negociation guerre de beige vers rose
+screen negociationBeigeRose:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeRose")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeRose")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
 
+label refusNegociationBeigeRose:
+    if armeeRegionBeige>=armeeRegionRose :
+        $ armeeRegionBeige -=armeeRegionRose
+        $ armeeRegionRose = 0
+        $ regionRoseActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionRose:
+        $ armeeRegionRose-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRose
+        scene mapRegionGrise
+        call screen vueTerritoire
 
+label acceptationNegociationBeigeRose:
+    if armeeRegionBeige>=armeeRegionRose :
+        $ argentRegionBeige += argentRegionRose//4
+        $ argentRegionRose -= argentRegionRose//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionRose:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionRose += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRose
+        scene mapRegionGrise
+        call screen vueTerritoire
 
+label beigeAttaqueRose:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionRose :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeRose
+    elif armeeRegionBeige<armeeRegionRose:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeRose
+
+#negociation guerre de beige vers orange --------------------------------------------------------------
+
+screen negociationBeigeOrange:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeOrange")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeOrange")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeOrange:
+    if armeeRegionBeige>=armeeRegionOrange :
+        $ armeeRegionBeige -=armeeRegionOrange
+        $ armeeRegionOrange = 0
+        $ regionOrangeActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeOrange
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionOrange:
+        $ armeeRegionOrange-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeOrange
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeOrange:
+    if armeeRegionBeige>=armeeRegionOrange :
+        $ argentRegionBeige += argentRegionOrange//4
+        $ argentRegionOrange -= argentRegionOrange//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeOrange
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionOrange:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionOrange += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeOrange
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueOrange:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionOrange :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeOrange
+    elif armeeRegionBeige<armeeRegionOrange:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeOrange
+
+#negociation guerre de beige vers Violet --------------------------------------------------------------
+
+screen negociationBeigeViolet:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeViolet")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeViolet")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeViolet:
+    if armeeRegionBeige>=armeeRegionViolet :
+        $ armeeRegionBeige -=armeeRegionViolet
+        $ armeeRegionViolet = 0
+        $ regionVioletActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeViolet
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionViolet:
+        $ armeeRegionViolet-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeViolet
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeViolet:
+    if armeeRegionBeige>=armeeRegionViolet :
+        $ argentRegionBeige += argentRegionViolet//4
+        $ argentRegionViolet -= argentRegionViolet//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeViolet
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionViolet:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionViolet += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeViolet
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueViolet:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionViolet :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeViolet
+    elif armeeRegionBeige<armeeRegionViolet:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeViolet
+
+#negociation guerre de beige vers Bleue --------------------------------------------------------------
+
+screen negociationBeigeBleue:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeBleue")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeBleue")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeBleue:
+    if armeeRegionBeige>=armeeRegionBleue :
+        $ armeeRegionBeige -=armeeRegionBleue
+        $ armeeRegionBleue = 0
+        $ regionBleueActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionBleue:
+        $ armeeRegionBleue-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeBleue:
+    if armeeRegionBeige>=armeeRegionBleue :
+        $ argentRegionBeige += argentRegionBleue//4
+        $ argentRegionBleue -= argentRegionBleue//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionBleue:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionBleue += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueBleue:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionBleue :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeBleue
+    elif armeeRegionBeige<armeeRegionBleue:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeBleue
+
+#negociation guerre de beige vers Rouge --------------------------------------------------------------
+
+screen negociationBeigeRouge:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeRouge")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeRouge")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeRouge:
+    if armeeRegionBeige>=armeeRegionRouge :
+        $ armeeRegionBeige -=armeeRegionRouge
+        $ armeeRegionRouge = 0
+        $ regionRougeActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRouge
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionRouge:
+        $ armeeRegionRouge-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRouge
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeRouge:
+    if armeeRegionBeige>=armeeRegionRouge :
+        $ argentRegionBeige += argentRegionRouge//4
+        $ argentRegionRouge -= argentRegionRouge//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRouge
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionRouge:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionRouge += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeRouge
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueRouge:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionRouge :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeRouge
+    elif armeeRegionBeige<armeeRegionRouge:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeRouge
+
+#negociation guerre de beige vers Verte --------------------------------------------------------------
+
+screen negociationBeigeVerte:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationBeigeVerte")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationBeigeVerte")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationBeigeVerte:
+    if armeeRegionBeige>=armeeRegionVerte :
+        $ armeeRegionBeige -=armeeRegionVerte
+        $ armeeRegionVerte = 0
+        $ regionVerteActive=True
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeVerte
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionVerte:
+        $ armeeRegionVerte-=armeeRegionBeige
+        $ armeeRegionBeige =0
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeVerte
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationBeigeVerte:
+    if armeeRegionBeige>=armeeRegionVerte :
+        $ argentRegionBeige += argentRegionVerte//4
+        $ argentRegionVerte -= argentRegionVerte//4
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeVerte
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionBeige<armeeRegionVerte:
+        $ argentRegionBeige -= argentRegionBeige//2
+        $ argentRegionVerte += argentRegionBeige//2
+        hide screen statsInteractionBeige
+        hide screen negociationBeigeVerte
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label beigeAttaqueVerte:
+    $regionBeigeActionFaite=True
+    if armeeRegionBeige>=armeeRegionVerte :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationBeigeVerte
+    elif armeeRegionBeige<armeeRegionVerte:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionBeige
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationBeigeVerte
+
+#------------------------------------------------------------------------------------------------------
 
 label upgradeRegionBeige:
     hide screen infoRegionBeige
     call screen upgradeRegionBeige
-screen upgradeRegionBeige:       
+screen upgradeRegionBeige:
     imagebutton :
         idle "upgrade1"
         xalign 0.3
@@ -1015,7 +1492,7 @@ label upgradeChoix1:
             scene mapRegionGrise
             call screen vueTerritoire
         else :
-            a "Vous êtes déjà au niveau maximum"    
+            a "Vous êtes déjà au niveau maximum"
     else :
         a "Il vous manque des ressources "
         hide screen statsInteractionBeige
@@ -1028,13 +1505,13 @@ label upgradeChoix2:
                     $regionBeigeActionFaite=True
                     $ argentRegionBeige -= 130
                     $ populationRegionBeige -= 130
-                    $ nourritureRegionBeige-=35         
+                    $ nourritureRegionBeige-=35
                     $ niveauRegionBeige+=3
                     hide screen statsInteractionBeige
                     scene mapRegionGrise
                     call screen vueTerritoire
                 else :
-                    a "Vous êtes déjà au niveau maximum"    
+                    a "Vous êtes déjà au niveau maximum"
             else :
                 a "Il vous manque des ressources "
                 hide screen statsInteractionBeige

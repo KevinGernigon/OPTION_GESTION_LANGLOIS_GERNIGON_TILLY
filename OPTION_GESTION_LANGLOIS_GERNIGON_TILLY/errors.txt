@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/regionBeige.rpy", line 864: invalid syntax
-    regionBeigeActive = False:
-                              ^
-    
+The label declarerGuerreRegionRouge is defined twice, at
+  File "game/regionRouge.rpy", line 2 and
+  File "game/script.rpy", line 599.
 
-Ren'Py Version: Ren'Py 7.4.3.1414
-Thu Mar 25 12:35:21 2021
+Ren'Py Version: Ren'Py 7.4.2.1292
+Mon Mar 29 10:53:36 2021

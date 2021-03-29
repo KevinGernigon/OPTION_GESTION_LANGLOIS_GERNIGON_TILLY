@@ -320,11 +320,7 @@ screen actionRegionGrise:
     $ popUpInfoRegionOn=False
     image "../images/diplomatie.jpg"
 
-label declarerGuerreRegionGrise:
-    call screen declarerGuerreRegionGrise
-screen declarerGuerreRegionGrise :
-    $ popUpInfoRegionOn=False
-    image "../images/attaque.jpg"
+
 
 transform carre_zoom:
     zoom 1.5

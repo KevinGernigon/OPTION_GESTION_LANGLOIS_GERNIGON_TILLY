@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+IOError: [Errno 2] No such file or directory: u'D:\\_Cours GD1B\\SpeProg\\RenPy\\OPTION_GESTION_LANGLOIS_GERNIGON_TILLY\\SpeProg/game\\saves\\persistent.1617038148.tmp'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 620, in main
+    renpy.persistent.update(True)
+  File "renpy/persistent.py", line 393, in update
+    save()
+  File "renpy/persistent.py", line 409, in save
+    renpy.loadsave.location.save_persistent(data)
+  File "renpy/savelocation.py", line 482, in save_persistent
+    l.save_persistent(data)
+  File "renpy/savelocation.py", line 338, in save_persistent
+    with open(fn_tmp, "wb") as f:
+IOError: [Errno 2] No such file or directory: u'D:\\_Cours GD1B\\SpeProg\\RenPy\\OPTION_GESTION_LANGLOIS_GERNIGON_TILLY\\SpeProg/game\\saves\\persistent.1617038148.tmp'
+
+Windows-10-10.0.18362
+Ren'Py 7.4.2.1292
+SpeProg 1.0
+Mon Mar 29 19:19:29 2021

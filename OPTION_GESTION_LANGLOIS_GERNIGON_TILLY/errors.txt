@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-The label declarerGuerreRegionJaune is defined twice, at
-  File "game/regionJaune.rpy", line 2 and
-  File "game/script.rpy", line 392.
+File "game/finDuTour.rpy", line 368: if statement expects a non-empty block.
+    if regionGriseActive == True:
+                                 ^
+
+File "game/finDuTour.rpy", line 373: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Mon Mar 29 18:30:30 2021
+Mon Mar 29 21:43:45 2021

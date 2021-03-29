@@ -1,4 +1,9 @@
 ﻿
+label declarerGuerreRegionJaune:
+    call screen declarerGuerreRegionJaune
+screen declarerGuerreRegionJaune :
+    $ popUpInfoRegionOn=False
+    image "../images/attaque.jpg"
 
 transform carre_zoom:
     zoom 1.5
@@ -41,7 +46,7 @@ screen infoRegionJaune :
                 xpos 800
                 ypos 220
                 action Jump("interactionJaune")
-        if (regionJauneActive==False or regionGriseActive==False) and regionJauneActionFaite==False:
+        if (regionBeigeActive==False or regionGriseActive==False or regionRoseActive==False or regionBleueActive==False) and regionJauneActionFaite==False:
             imagebutton :
                 idle "../images/attaquer.png"
                 xpos 800
@@ -801,12 +806,12 @@ label attaqueJaune:
     hide screen infoRegionJaune
     call screen attaqueJaune
 screen attaqueJaune:
-    if regionJauneActive==False:
+    if regionBeigeActive==False:
         imagebutton:
-            idle "regionJauneRouge.png"
+            idle "regionBeigeRouge.png"
             xpos 370
             ypos 90
-            action Jump("jauneAttaqueJaune")
+            action Jump("jauneAttaqueBeige")
         image "logoAttaque":
             xpos 575
             ypos 200
@@ -820,7 +825,7 @@ screen attaqueJaune:
             xpos 450
             ypos 50
 
-#negociation guerre de Jaune vers grise
+#negociation guerre de jaune vers grise
 screen negociationJauneGrise:
     imagebutton :
         idle "accepter"
@@ -900,7 +905,7 @@ label jauneAttaqueGrise:
         a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
         call screen negociationJauneGrise
 
-#negociation guerre de jaune vers Jaune
+#negociation guerre de jaune vers beige
 screen negociationJauneBeige:
     imagebutton :
         idle "accepter"
@@ -957,7 +962,7 @@ label acceptationNegociationJauneBeige:
         scene mapRegionGrise
         call screen vueTerritoire
 
-label JauneAttaqueBeige:
+label jauneAttaqueBeige:
     $regionJauneActionFaite=True
     if armeeRegionJaune>=armeeRegionBeige :
         hide screen vueTerritoire
@@ -979,9 +984,165 @@ label JauneAttaqueBeige:
         a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
         call screen negociationJauneBeige
 
+#negociation guerre de jaune vers rose
+screen negociationJauneRose:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationJauneRose")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationJauneRose")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
 
+label refusNegociationJauneRose:
+    if armeeRegionJaune>=armeeRegionRose :
+        $ armeeRegionJaune -=armeeRegionRose
+        $ armeeRegionRose = 0
+        $ regionRoseActive=True
+        hide screen statsInteractionJaune
+        hide screen negociationJauneRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionJaune<armeeRegionRose:
+        $ armeeRegionRose-=armeeRegionJaune
+        $ armeeRegionJaune =0
+        hide screen statsInteractionJaune
+        hide screen negociationJauneRose
+        scene mapRegionGrise
+        call screen vueTerritoire
 
+label acceptationNegociationJauneRose:
+    if armeeRegionJaune>=armeeRegionRose :
+        $ argentRegionJaune += argentRegionRose//4
+        $ argentRegionRose -= argentRegionRose//4
+        hide screen statsInteractionJaune
+        hide screen negociationJauneRose
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionJaune<armeeRegionRose:
+        $ argentRegionJaune -= argentRegionJaune//2
+        $ argentRegionRose += argentRegionJaune//2
+        hide screen statsInteractionJaune
+        hide screen negociationJauneRose
+        scene mapRegionGrise
+        call screen vueTerritoire
 
+label jauneAttaqueRose:
+    $regionJauneActionFaite=True
+    if armeeRegionJaune>=armeeRegionRose :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionJaune
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationJauneRose
+    elif armeeRegionJaune<armeeRegionRose:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionJaune
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationJauneRose
+
+#negociation guerre de jaune vers Bleue --------------------------------------------------------------
+
+screen negociationJauneBleue:
+    imagebutton :
+        idle "accepter"
+        xpos 300
+        yalign 0.5
+        at choix_icons
+        action  Jump("acceptationNegociationJauneBleue")
+    text "Accepter" :
+        xpos 280
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+#choix droite
+    imagebutton :
+        idle "refus"
+        xpos 950
+        yalign 0.5
+        at choix_icons
+        action  Jump("refusNegociationJauneBleue")
+    text "Refuser" :
+        xpos 960
+        yalign 0.6
+        outlines [ (2, "#000", 0, 0) ]
+
+label refusNegociationJauneBleue:
+    if armeeRegionJaune>=armeeRegionBleue :
+        $ armeeRegionJaune -=armeeRegionBleue
+        $ armeeRegionBleue = 0
+        $ regionBleueActive=True
+        hide screen statsInteractionJaune
+        hide screen negociationJauneBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionJaune<armeeRegionBleue:
+        $ armeeRegionBleue-=armeeRegionJaune
+        $ armeeRegionJaune =0
+        hide screen statsInteractionJaune
+        hide screen negociationJauneBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label acceptationNegociationJauneBleue:
+    if armeeRegionJaune>=armeeRegionBleue :
+        $ argentRegionJaune += argentRegionBleue//4
+        $ argentRegionBleue -= argentRegionBleue//4
+        hide screen statsInteractionJaune
+        hide screen negociationJauneBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+    elif armeeRegionJaune<armeeRegionBleue:
+        $ argentRegionJaune -= argentRegionJaune//2
+        $ argentRegionBleue += argentRegionJaune//2
+        hide screen statsInteractionJaune
+        hide screen negociationJauneBleue
+        scene mapRegionGrise
+        call screen vueTerritoire
+
+label jauneAttaqueBleue:
+    $regionJauneActionFaite=True
+    if armeeRegionJaune>=armeeRegionBleue :
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionJaune
+        p "Je vous déclare la guerre !"
+        a "S'il vous plait prenez cet Argent et épargnez nos vies !"
+        call screen negociationJauneBleue
+    elif armeeRegionJaune<armeeRegionBleue:
+        hide screen vueTerritoire
+        scene office
+        show pythie at left
+        show armees at right
+        show screen statsInteractionJaune
+        p "Je vous déclare la guerre !"
+        a "Vous n'avez aucune chance mécréant !"
+        a "Mais je veux bien vous laisser partir en échange de la moitié de votre Argent."
+        call screen negociationJauneBleue
+#------------------------------------------------------------------------------------------------------
 
 label upgradeRegionJaune:
     hide screen infoRegionJaune
@@ -998,7 +1159,7 @@ screen upgradeRegionJaune:
         yalign 0.5
         action  Jump("upgradeChoix2")
 
-label upgradeChoixJaune1:
+label upgradeChoix1:
     if argentRegionJaune >  50 and populationRegionJaune > 50 and nourritureRegionJaune > 25 :
         if niveauRegionJaune<6 :
             $regionJauneActionFaite=True
@@ -1017,7 +1178,7 @@ label upgradeChoixJaune1:
         scene mapRegionGrise
         call screen vueTerritoire
 
-label upgradeChoixJaune2:
+label upgradeChoix2:
             if argentRegionJaune > 130 and populationRegionJaune > 130 and nourritureRegionJaune > 65 :
                 if niveauRegionJaune<6 :
                     $regionJauneActionFaite=True

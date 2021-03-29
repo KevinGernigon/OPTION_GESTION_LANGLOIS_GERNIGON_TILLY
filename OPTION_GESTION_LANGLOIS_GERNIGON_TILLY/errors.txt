@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-The label declarerGuerreRegionRouge is defined twice, at
-  File "game/regionRouge.rpy", line 2 and
-  File "game/script.rpy", line 599.
+The label declarerGuerreRegionJaune is defined twice, at
+  File "game/regionJaune.rpy", line 2 and
+  File "game/script.rpy", line 392.
 
 Ren'Py Version: Ren'Py 7.4.2.1292
-Mon Mar 29 10:53:36 2021
+Mon Mar 29 18:30:30 2021
